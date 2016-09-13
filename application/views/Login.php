@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="login-subtitle">
-                        Don't have an account yet? <a href="#">Create an account</a>
+                        Don't have an account yet? <a href="<?php echo site_url('Signup') ?>">Create an account</a>
                     </div>
                     </form>
 
