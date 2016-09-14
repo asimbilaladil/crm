@@ -24,39 +24,39 @@
                 <div class="login-body">
   <div class="login-title"><strong>Registration</strong>, use form below</div>
            
-                    <form action="index.html" class="form-horizontal" method="post">
+                    <form action="<?php echo site_url('Signup/save') ?>" class="form-horizontal" method="post">
                         
                     <h4 class="login-subtitle">Personal info</h4>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="First Name"/>
+                            <input type="text" class="form-control" name="firstname" placeholder="First Name"/>
                         </div>
                     </div>
                         <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Last Name"/>
+                            <input type="text" class="form-control" name="lastname" placeholder="Last Name"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Company Name"/>
+                            <input type="text" class="form-control" name="companyname" placeholder="Company Name"/>
                         </div>
                     </div>
                     
                     <h4 class="login-subtitle">Authentication</h4>                    
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="email" class="form-control" placeholder="Email"/>
+                            <input type="email" class="form-control" name="email" placeholder="Email"/>
                         </div>
                     </div>                        
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="Password"/>
+                            <input type="password" class="form-control" name="password" placeholder="Password"/>
                         </div>
                     </div>                    
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="Re-Password"/>
+                            <input type="password" class="form-control" name="confirmpassword" placeholder="Re-Password"/>
                         </div>
                     </div>             
                     
