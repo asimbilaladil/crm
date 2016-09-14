@@ -44,9 +44,9 @@
                             </div>
                         </div>                                                                        
                     </li>
-                    <li class="xn-title">Navigation</li>
+                    <li class="xn-title">Employee</li>
                     <li class="active">
-                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+                        <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Employee</span></a>                        
                     </li>                    
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
