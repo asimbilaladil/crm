@@ -3,11 +3,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AddEmployee extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+        $this->load->model('UserModel');
+    }
+
     public function index() {
+
 
         $this->load->view('common/header');
         $this->load->view('AddEmployee');
         $this->load->view('common/footer');
         
     }
+
+    public function save() {
+
+        $firstName = $this->input->post('firstName', true);
+        $lastName = $this->input->post('lastName', true);
+        $email = $this->input->post('email', true);
+        $password = $this->input->post('password', true);
+        $add =  ( empty( $this->input->post('add', true) ) ? 0 : 1 );
+        $update = ( empty( $this->input->post('update', true) ) ? 0 : 1 );
+        $delete = ( empty( $this->input->post('delete', true) ) ? 0 : 1 );
+        $password_request = ( empty( $this->input->post('delete', true) ) ? 0 : 1 );
+
+
+        if ($this->UserModel->userExist($email)) {
+            $_SESSION['error'] = 1;
+            redirect('AddEmployee');
+        }
+
+        $data = array (
+            'firstname' => $firstName,
+            'lastname' => $lastName,
+            'company_id' => $_SESSION['company_id'],
+            'email' => $email,
+            'password' => md5($password),
+            'type' => 'EMPLOYEE',
+            'add_permission' => $add,
+            'update_permission' => $update,
+            'delete_permission' => $delete,
+            'password_request' => $password_request
+
+        );
+
+        $this->UserModel->insert($data);
+
+        redirect('Home');
+
+    }    
 }

@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="POST" action="<?php echo site_url('AddEmployee/save') ?>">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Add</strong> Employee</h3>
@@ -17,14 +17,22 @@
                                 <div class="panel-body">
                                     <p> Add your company employee </p>
                                 </div>
-                                <div class="panel-body">                                                                        
-                                    
+                                <div class="panel-body"> 
+                                    <?php if( isset( $_SESSION['error'] ) && $_SESSION['error'] == 1 ) {  ?>      
+                                     <div class="col-md-3">
+                                     </div>                                                               
+                                    <div style="width:50%" class=" alert alert-danger" role="alert">
+                           
+                                    <strong>Sorry!</strong> Email address already exists.
+                                    </div>
+                                    <br> <br> <br> <br>
+                                    <?php } ?>
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">First Name</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input type="text" class="form-control" name="firstName">
+                                                <input required="" type="text" class="form-control" name="firstName">
                                             </div>                                            
 
                                         </div>
@@ -34,7 +42,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input type="text" class="form-control" name="lastName">
+                                                <input required="" type="text" class="form-control" name="lastName">
                                             </div>                                            
 
                                         </div>
@@ -44,7 +52,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-envelope-o"></span></span>
-                                                <input type="email" class="form-control" name="email">
+                                                <input required="" type="email" class="form-control" name="email">
                                             </div>            
 
                                         </div>
@@ -54,7 +62,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" class="form-control" name="password">
+                                                <input required="" type="password" class="form-control" name="password">
                                             </div>            
                                         </div>
                                     </div>
@@ -62,7 +70,7 @@
                                         <label class="col-md-3 col-xs-12 control-label">Update Password</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="checkbox">
-                                                <label><input type="checkbox" value="">Ask User to change password</label>
+                                                <label><input type="checkbox" value="1">Ask User to change password</label>
                                             </div>
                                         </div>
                                 </div>
@@ -70,9 +78,9 @@
                                         <label class="col-md-3 col-xs-12 control-label">Permissions</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="checkbox">
-                                                <label> <input type="checkbox" value="">Add / Update </label> &nbsp;    
-                                                <label> <input type="checkbox" value=""> View </label> &nbsp;   
-                                                <label> <input type="checkbox" value=""> Delete </label>&nbsp;  
+                                                <label> <input type="checkbox" value="1" name="add">Add </label> &nbsp;    
+                                                <label> <input type="checkbox" value="1" name="update"> Update </label> &nbsp;   
+                                                <label> <input type="checkbox" value="1" name="delete"> Delete </label>&nbsp;  
                                             </div>
 
                                         </div>
