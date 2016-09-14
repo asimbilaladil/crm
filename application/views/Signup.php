@@ -24,6 +24,12 @@
                 <div class="login-body">
   <div class="login-title"><strong>Registration</strong>, use form below</div>
            
+                    <?php if($this->session->flashdata('signupFail')) { ?>
+                        <div class="alert alert-danger">
+                          <strong> <?php echo $this->session->flashdata('signupFail') ?> </strong> 
+                        </div>
+                    <?php } ?>
+
                     <form action="<?php echo site_url('Signup/save') ?>" class="form-horizontal" method="post">
                         
                     <h4 class="login-subtitle">Personal info</h4>
