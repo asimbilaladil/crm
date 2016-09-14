@@ -6,6 +6,9 @@ class AddEmployee extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('UserModel');
+        $this->load->library('email');
+        $this->email->set_mailtype("html");
+
     }
 
     public function index() {
@@ -30,7 +33,9 @@ class AddEmployee extends CI_Controller {
 
 
         if ($this->UserModel->userExist($email)) {
-            $_SESSION['error'] = 1;
+
+			$cookie_value = 1;
+			setcookie('error', $cookie_value, time() + 5, "/");
             redirect('AddEmployee');
         }
 
@@ -49,8 +54,23 @@ class AddEmployee extends CI_Controller {
         );
 
         $this->UserModel->insert($data);
+        $message = '<p> Your account has been created.</p> <br> <p> Email: '. $data["email"] .' </p> <br> <p> Password: '. $data["password"] .' </p>';
+		sendEmail( $data['email'] , $message );
 
         redirect('Home');
 
-    }    
+    }  
+
+    //send  employee details  to employee
+    public function sendEmail( $email, $message ) {
+        
+        $this->email->from('no-reply@crm.com', 'CRM');
+        $this->email->to( $email  );
+
+        $this->email->subject('You account details');
+        $this->email->message($message);
+
+        $this->email->send();
+
+    }      
 }

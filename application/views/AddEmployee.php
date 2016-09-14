@@ -18,7 +18,7 @@
                                     <p> Add your company employee </p>
                                 </div>
                                 <div class="panel-body"> 
-                                    <?php if( isset( $_SESSION['error'] ) && $_SESSION['error'] == 1 ) {  ?>      
+                                    <?php if( isset( $_COOKIE['error'] ) && $_COOKIE['error'] == 1 ) {  ?>      
                                      <div class="col-md-3">
                                      </div>                                                               
                                     <div style="width:50%" class=" alert alert-danger" role="alert">
