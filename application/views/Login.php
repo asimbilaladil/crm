@@ -29,6 +29,13 @@
                         </div>
                     <?php } ?>
 
+
+                    <?php if($this->session->flashdata('signupSuccess')) { ?>
+                        <div class="alert alert-success">
+                          <strong> <?php echo $this->session->flashdata('signupSuccess') ?> </strong> 
+                        </div>
+                    <?php } ?>                    
+
                     <div class="login-title"><strong>Welcome</strong>, Please login</div>
                     <form action="<?php echo site_url('Login/authenticate') ?>" class="form-horizontal" method="post">
                     <div class="form-group">

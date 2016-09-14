@@ -14,8 +14,7 @@ class Login extends CI_Controller {
 
     }
 
-    public function authenticate() {	
-
+    public function authenticate() {
 
         $email = $this->input->post('email');
         $password = md5($this->input->post('password'));
@@ -25,6 +24,8 @@ class Login extends CI_Controller {
         if ($result) {
             redirect('home');
         }
+
+        $this->session->set_userdata($result);
 
         $this->session->set_flashdata('loginFail', 'Username password invalid');
         redirect('login');

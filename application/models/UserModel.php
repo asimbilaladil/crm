@@ -24,6 +24,15 @@ class UserModel extends CI_Model {
             return $this->db->insert_id();
         } 
         return -1 ;
-    }   
+    }
+
+    public function userExist($email) {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('email', $email);
+        $quary_result=$this->db->get();
+        $result=$quary_result->row();
+        return $result;        
+    }
 
 }
