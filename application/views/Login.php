@@ -16,22 +16,29 @@
         <!-- EOF CSS INCLUDE -->                                     
     </head>
     <body>
-        
         <div class="login-container">
         
             <div class="login-box animated fadeInDown">
                 <div class="login-logo"></div>
                 <div class="login-body">
+
+
+                    <?php if($this->session->flashdata('loginFail')) { ?>
+                        <div class="alert alert-danger">
+                          <strong> <?php echo $this->session->flashdata('loginFail') ?> </strong> 
+                        </div>
+                    <?php } ?>
+
                     <div class="login-title"><strong>Welcome</strong>, Please login</div>
-                    <form action="index.html" class="form-horizontal" method="post">
+                    <form action="<?php echo site_url('Login/authenticate') ?>" class="form-horizontal" method="post">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Username"/>
+                            <input type="email" name="email" class="form-control" placeholder="Email"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="Password"/>
+                            <input type="password" name="password" class="form-control" placeholder="Password"/>
                         </div>
                     </div>
                     <div class="form-group">
