@@ -22,10 +22,19 @@ class Login extends CI_Controller {
         $result = $this->UserModel->login($email, $password);
 
         if ($result) {
+
+            $data = array(
+                'email' => $result->email,
+                'view_permission' => $result->view_permission,
+                'update_permission' => $result->update_permission,
+                'delete_permission' => $result->delete_permission,
+                'company_id' => $result->company_id
+            );
+
+            $this->session->set_userdata($data);
+
             redirect('home');
         }
-
-        $this->session->set_userdata($result);
 
         $this->session->set_flashdata('loginFail', 'Username password invalid');
         redirect('login');

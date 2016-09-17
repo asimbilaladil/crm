@@ -37,16 +37,26 @@ class Signup extends CI_Controller {
         }
 
         $data = array (
-            'firstname' => $firstName,
-            'lastname' => $lastName,
-            'company_name' => $companyName,
-            'email' => $email,
-            'password' => md5($password),
-            'type' => 'COMPANY',
-            'permission' => 3
+            'firstname'          => $firstName,
+            'lastname'           => $lastName,
+            'company_name'       => $companyName,
+            'email'              => $email,
+            'password'           => md5($password),
+            'type'               => 'COMPANY',
+            'view_permission'    => 1,
+            'update_permission'  => 1,
+            'delete_permission'  => 1
         );
 
-        $this->UserModel->insert($data);
+
+        //update inserted id in companyId
+        $insertedId = $this->UserModel->insert($data);
+
+        $updateData = array(
+            'company_id' => $insertedId
+        );
+
+        $this->UserModel->update('id', $insertedId, $updateData);
 
         $this->session->set_flashdata('signupSuccess', 'Successfully signup');
         redirect('login');
