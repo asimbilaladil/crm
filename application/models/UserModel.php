@@ -35,4 +35,13 @@ class UserModel extends CI_Model {
         return $result;        
     }
 
+
+    public function update( $whereParam1, $whereParam2 ,$data ){
+        $this->db->where( $whereParam1, $whereParam2 );
+        $result = $this->db->update( $this->tableName ,$data);
+        if ( $result ) {
+            return true;
+        } 
+        return false;
+    }
 }
