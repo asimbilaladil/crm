@@ -52,11 +52,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Occurrence</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Type</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-envelope-o"></span></span>
-                                                <select onchange="occurrenceChange(this)" class="form-control select" name="occurrence">
+                                                <select onchange="typeChange(this)" class="form-control select" name="type">
                                                     <option value="ONE_TIME">One Time</option>
                                                     <option value="MULTIPLE_TIME">Multiple Time</option>
                                                 </select>
@@ -65,11 +65,11 @@
                                         </div>
                                     </div>                                    
                                     <div style="display:none" id="intervalDiv" class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Interval</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Occurrence</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="number" class="form-control" name="interval">
+                                                <input type="number" class="form-control" name="occurrence">
                                             </div>            
                                         </div>
                                     </div>                           
@@ -90,7 +90,7 @@
 
 <script>
 
-function occurrenceChange(sel) {
+function typeChange(sel) {
 
     var intervalId = document.getElementById("intervalDiv");
 

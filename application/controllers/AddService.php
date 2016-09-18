@@ -25,13 +25,13 @@ class AddService extends CI_Controller {
         $serviceName = $this->input->post('serviceName', true);
         $rate = $this->input->post('rate', true);
         $occurrence = $this->input->post('occurrence', true);
-        $interval = $this->input->post('interval', true);
+        $type = $this->input->post('type', true);
 
         $data = array(
             'service_name' => $serviceName,
             'rate' => $rate,
             'occurrence' => $occurrence,
-            'time_interval' => $interval,
+            'type' => $type,
         );
 
         if ($this->ServiceModel->insert($data) > 0) {
