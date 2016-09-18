@@ -55,7 +55,7 @@ class AddEmployee extends CI_Controller {
 
         $this->UserModel->insert($data);
         $message = '<p> Your account has been created.</p> <br> <p> Email: '. $data["email"] .' </p> <br> <p> Password: '. $data["password"] .' </p>';
-		sendEmail( $data['email'] , $message );
+		//sendEmail( $data['email'] , $message );
 
         redirect('Home');
 
