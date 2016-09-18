@@ -48,11 +48,20 @@
                     <li class="active">
                         <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Employee</span></a>                        
                     </li>
-
-                    <li class="active">
+                    <li >
+                        <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">View Employee</span></a>                        
+                    </li>
+                    <li >
+                        <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Delete Employee</span></a>                        
+                    </li>                    
+                    <li class="xn-title">Services</li>
+                    <li >
                         <a href="<?php echo site_url("AddService") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Service</span></a>                        
                     </li>                                        
-
+                    <li class="xn-title">User</li>
+                    <li >
+                        <a href="<?php echo site_url("Logout") ?>"><span class="fa fa-user"></span> <span class="xn-text">Logout</span></a>                        
+                    </li> 
                     
                 </ul>
                 <!-- END X-NAVIGATION -->

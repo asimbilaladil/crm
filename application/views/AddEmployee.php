@@ -70,7 +70,7 @@
                                         <label class="col-md-3 col-xs-12 control-label">Update Password</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="checkbox">
-                                                <label><input class="icheckbox" type="checkbox" value="1">Ask User to change password</label>
+                                                <label><input class="icheckbox" type="checkbox" value="1">&nbsp;  Ask User to change password</label>
                                             </div>
                                         </div>
                                 </div>
@@ -78,9 +78,9 @@
                                         <label class="col-md-3 col-xs-12 control-label">Permissions</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="checkbox">
-                                                <label> <input class="icheckbox" type="checkbox" value="1" name="add">Add </label> &nbsp;    
-                                                <label> <input class="icheckbox" type="checkbox" value="1" name="update"> Update </label> &nbsp;   
-                                                <label> <input class="icheckbox" type="checkbox" value="1" name="delete"> Delete </label>&nbsp;  
+                                                <label> <input class="icheckbox" type="checkbox" value="1" name="add">&nbsp; Add </label> &nbsp;    
+                                                <label> <input class="icheckbox" type="checkbox" value="1" name="update">&nbsp;  Update </label> &nbsp;   
+                                                <label> <input class="icheckbox" type="checkbox" value="1" name="delete">&nbsp;  Delete </label>&nbsp;  
                                             </div>
 
                                         </div>
