@@ -47,7 +47,11 @@
                     <li class="xn-title">Employee</li>
                     <li class="active">
                         <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Employee</span></a>                        
-                    </li>                    
+                    </li>
+
+                    <li class="active">
+                        <a href="<?php echo site_url("AddService") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Service</span></a>                        
+                    </li>                                        
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
                         <ul>
