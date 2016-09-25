@@ -64,11 +64,6 @@
                     <li >
                         <a href="<?php echo site_url("AddClient") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Client</span></a>                        
                     </li>                                                         
-                    <li class="xn-title">User</li>
-                    <li >
-                        <a href="<?php echo site_url("Logout") ?>"><span class="fa fa-user"></span> <span class="xn-text">Logout</span></a>                        
-                    </li> 
-                    
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>

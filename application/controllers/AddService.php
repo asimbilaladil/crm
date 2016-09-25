@@ -5,6 +5,9 @@ class AddService extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        if( !isset( $_SESSION['email']) ){
+          redirect("Login/");
+        } 
         $this->load->model('ServiceModel');
         $this->load->library('email');
         $this->email->set_mailtype("html");

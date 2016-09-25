@@ -5,6 +5,9 @@ class AddClient extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        if( !isset( $_SESSION['email']) ){
+          redirect("Login/");
+        }         
         $this->load->model('ClientModel');
     }
 

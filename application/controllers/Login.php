@@ -40,4 +40,14 @@ class Login extends CI_Controller {
         redirect('login');
 
     }
+    /**
+     * logout
+     */
+    function logout() {
+
+        $this->session->sess_destroy();
+
+        redirect('Login/');
+
+    }  
 }
