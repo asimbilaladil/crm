@@ -44,26 +44,20 @@
                             </div>
                         </div>                                                                        
                     </li>
-                    <li class="xn-title">Employee</li>
-                    <li class="active">
-                        <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Employee</span></a>                        
-                    </li>
-                    <li >
-                        <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">View Employee</span></a>                        
-                    </li>
-                    <li >
-                        <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Delete Employee</span></a>                        
-                    </li>                    
-                    <li class="xn-title">Services</li>
-                    <li >
-                        <a href="<?php echo site_url("AddService") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Service</span></a>                        
-                    </li>
-
-                    </li>                    
                     <li class="xn-title">Clients</li>
                     <li >
-                        <a href="<?php echo site_url("AddClient") ?>"><span class="fa fa-user"></span> <span class="xn-text">Add Client</span></a>                        
-                    </li>                                                         
+                        <a href="<?php echo site_url("AddClient") ?>"><span class="fa fa-user"></span> <span class="xn-text">Clients</span></a>                        
+                    </li>  
+                           
+                    <li class="xn-title">Comapany Settings</li>
+                    <li class="active">
+                        <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Users</span></a>                        
+                    </li>
+                    <li class="active">
+                        <a href="<?php echo site_url("AddService") ?>"><span class="fa fa-user"></span> <span class="xn-text">Services</span></a>                        
+                    </li>
+                  
+                                                        
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
