@@ -23,23 +23,25 @@ class AddClient extends CI_Controller {
     public function save() {
 
         $firstName = $this->input->post('firstName', true);
+        $initial = $this->input->post('initial', true);
         $lastName = $this->input->post('lastName', true);
+        $gender = $this->input->post('gender', true);
         $email = $this->input->post('email', true);
         $phone = $this->input->post('phone', true);
-        $country = $this->input->post('country', true);
-        $city = $this->input->post('city', true);
-        $state = $this->input->post('state', true);
         $address = $this->input->post('address', true);
+        $service = $this->input->post('service', true);
+        $status = $this->input->post('status', true);
 
         $data = array (
             'firstname' => $firstName,
+            'initial' => $initial,
             'lastname' => $lastName,
+            'gender' => $gender,
             'email' => $email,
             'phone' => $phone,
-            'country' => $country,
-            'city' => $city,
-            'state' => $state,
-            'address' => $address
+            'address' => $address,
+            'service' => $address,
+            'status' => $status,
         );
 
         if ($this->ClientModel->insert($data) > 0) {

@@ -41,6 +41,19 @@
 
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Initial</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                                <input required="" type="text" class="form-control" name="initial">
+                                            </div>                                            
+
+                                        </div>
+                                    </div>
+
+
                                    <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Last Name</label>
                                         <div class="col-md-6 col-xs-12">                                            
@@ -51,6 +64,17 @@
 
                                         </div>
                                     </div>
+
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Gender</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                              <input type="radio" name="gender" name="gender" value="male"> Male<br>
+                                              <input type="radio" name="gender" name="gender" value="female"> Female<br>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">                                        
                                         <label class="col-md-3 col-xs-12 control-label">Email</label>
                                         <div class="col-md-6 col-xs-12">
@@ -71,35 +95,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Country</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input required="" type="text" class="form-control" name="country">
-                                            </div>            
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">State</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input required="" type="text" class="form-control" name="state">
-                                            </div>            
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">City</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input required="" type="text" class="form-control" name="city">
-                                            </div>            
-                                        </div>
-                                    </div>
 
                                     <div class="form-group">                                        
                                         <label class="col-md-3 col-xs-12 control-label">Address</label>
@@ -110,7 +105,27 @@
                                             </div>            
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Service</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                                <input required="" type="text" class="form-control" name="service">
+                                            </div>            
+                                        </div>
+                                    </div>
                            
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Status</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                                <input required="" type="text" class="form-control" name="status">
+                                            </div>            
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="panel-footer">
                                     
