@@ -1,3 +1,5 @@
+
+    
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -22,6 +24,8 @@ class AddClient extends CI_Controller {
 
     public function save() {
 
+
+
         $firstName = $this->input->post('firstName', true);
         $initial = $this->input->post('initial', true);
         $lastName = $this->input->post('lastName', true);
@@ -42,6 +46,7 @@ class AddClient extends CI_Controller {
             'address' => $address,
             'service' => $address,
             'status' => $status,
+            'company_id' => $_SESSION['company_id'],
         );
 
         if ($this->ClientModel->insert($data) > 0) {
