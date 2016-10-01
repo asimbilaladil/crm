@@ -31,11 +31,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php  foreach ($data['clients'] as $key => $item) { ?>
                                 <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
+                                    <td><?php echo $item->firstname;  ?></td>
+                                    <td><?php echo $item->lastname;  ?></td>
+                                    <td><?php echo $item->email;  ?></td>
                                 </tr>
+                            <?php } ?> 
                             </tbody>
                         </table>
                     </div>

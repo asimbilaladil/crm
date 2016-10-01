@@ -13,9 +13,11 @@ class Clients extends CI_Controller {
 
     public function index() {
 
+        $company_id = $this->session->userdata('company_id');
+        $data['clients'] = $this->ClientModel->getClientsByCompany($company_id);
 
         $this->load->view('common/header');
-        $this->load->view('Clients');
+        $this->load->view( 'Clients', array('data' => $data) );
         $this->load->view('common/footer');
         
     }
