@@ -44,4 +44,15 @@ class UserModel extends CI_Model {
         } 
         return false;
     }
+
+    public function getEmployeesByCompany($company_id) {
+
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('company_id', $company_id);
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;  
+              
+    }
 }

@@ -61,7 +61,7 @@
         
         <script type="text/javascript" src="<?php echo base_url("assets/js/plugins.js") ?>"></script>        
         <script type="text/javascript" src="<?php echo base_url("assets/js/actions.js") ?>"></script>
-        
+        <script type="text/javascript" src="<?php echo base_url("assets/js/search.js") ?>"></script>
         <script type="text/javascript" src="<?php echo base_url("assets/js/demo_dashboard.js") ?>"></script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->         

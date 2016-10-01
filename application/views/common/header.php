@@ -46,12 +46,12 @@
                     </li>
                     <li class="xn-title">Clients</li>
                     <li >
-                        <a href="<?php echo site_url("AddClient") ?>"><span class="fa fa-user"></span> <span class="xn-text">Clients</span></a>                        
+                        <a href="<?php echo site_url("Clients") ?>"><span class="fa fa-user"></span> <span class="xn-text">Clients</span></a>                        
                     </li>  
                            
                     <li class="xn-title">Comapany Settings</li>
                     <li class="active">
-                        <a href="<?php echo site_url("AddEmployee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Users</span></a>                        
+                        <a href="<?php echo site_url("Employee") ?>"><span class="fa fa-user"></span> <span class="xn-text">Users</span></a>                        
                     </li>
                     <li class="active">
                         <a href="<?php echo site_url("AddService") ?>"><span class="fa fa-user"></span> <span class="xn-text">Services</span></a>                        
