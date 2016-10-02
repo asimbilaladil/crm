@@ -34,13 +34,13 @@
                             <?php  foreach ($data['employees'] as $key => $item) { ?>
                                 <tr>
                                     <td>
-                                        <a href= ' <?php echo site_url("AddClient?token=".$item->token) ?>'>  <?php echo $item->firstname;  ?>  </a>
+                                        <a href= ' <?php echo site_url("ViewEmployee?token=".$item->token) ?>'>  <?php echo $item->firstname;  ?>  </a>
                                     </td>
                                     <td>
-                                        <a href= ' <?php echo site_url("AddClient?token=".$item->token) ?>'>  <?php echo $item->lastname;  ?>  </a>
+                                        <a href= ' <?php echo site_url("ViewEmployee?token=".$item->token) ?>'>  <?php echo $item->lastname;  ?>  </a>
                                     </td>
                                     <td>
-                                        <a href= ' <?php echo site_url("AddClient?token=".$item->token) ?>'>  <?php echo $item->email;  ?>  </a>
+                                        <a href= ' <?php echo site_url("ViewEmployee?token=".$item->token) ?>'>  <?php echo $item->email;  ?>  </a>
                                     </td>
                                 </tr>
                             <?php } ?>   

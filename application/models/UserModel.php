@@ -55,4 +55,15 @@ class UserModel extends CI_Model {
         return $result;  
               
     }
+
+    public function getEmployee($token) {
+
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('token', $token);
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;  
+              
+    }
 }
