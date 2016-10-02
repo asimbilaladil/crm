@@ -33,9 +33,15 @@
                             <tbody>
                             <?php  foreach ($data['employees'] as $key => $item) { ?>
                                 <tr>
-                                    <td><?php echo $item->firstname;  ?></td>
-                                    <td><?php echo $item->lastname;  ?></td>
-                                    <td><?php echo $item->email;  ?></td>
+                                    <td>
+                                        <a href= ' <?php echo site_url("AddClient?token=".$item->token) ?>'>  <?php echo $item->firstname;  ?>  </a>
+                                    </td>
+                                    <td>
+                                        <a href= ' <?php echo site_url("AddClient?token=".$item->token) ?>'>  <?php echo $item->lastname;  ?>  </a>
+                                    </td>
+                                    <td>
+                                        <a href= ' <?php echo site_url("AddClient?token=".$item->token) ?>'>  <?php echo $item->email;  ?>  </a>
+                                    </td>
                                 </tr>
                             <?php } ?>   
                             </tbody>

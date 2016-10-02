@@ -32,10 +32,16 @@
                             </thead>
                             <tbody>
                             <?php  foreach ($data['clients'] as $key => $item) { ?>
-                                <tr>
-                                    <td><?php echo $item->firstname;  ?></td>
-                                    <td><?php echo $item->lastname;  ?></td>
-                                    <td><?php echo $item->email;  ?></td>
+                                 <tr>
+                                    <td>
+                                        <a href= ' <?php echo site_url("ViewClient?token=".$item->token) ?>'>  <?php echo $item->firstname;  ?>  </a>
+                                    </td>
+                                    <td>
+                                        <a href= ' <?php echo site_url("ViewClient?token=".$item->token) ?>'>  <?php echo $item->lastname;  ?>  </a>
+                                    </td>
+                                    <td>
+                                        <a href= ' <?php echo site_url("ViewClient?token=".$item->token) ?>'>  <?php echo $item->email;  ?>  </a>
+                                    </td>
                                 </tr>
                             <?php } ?> 
                             </tbody>

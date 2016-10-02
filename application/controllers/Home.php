@@ -8,6 +8,7 @@ class Home extends CI_Controller {
         parent::__construct();
         if( !isset( $_SESSION['email']) ){
           redirect("Login/");
+
         } 
 
     }
@@ -15,6 +16,6 @@ class Home extends CI_Controller {
 
         $this->load->view('common/header');
         $this->load->view('common/footer');
-        
+
     }
 }

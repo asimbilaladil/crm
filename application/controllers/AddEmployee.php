@@ -11,7 +11,7 @@ class AddEmployee extends CI_Controller {
         $this->load->model('UserModel');
         $this->load->library('email');
         $this->email->set_mailtype("html");
-
+        $this->load->helper('string');
     }
 
     public function index() {
@@ -33,7 +33,7 @@ class AddEmployee extends CI_Controller {
         $update = ( empty( $this->input->post('update', true) ) ? 0 : 1 );
         $delete = ( empty( $this->input->post('delete', true) ) ? 0 : 1 );
         $password_request = ( empty( $this->input->post('delete', true) ) ? 0 : 1 );
-
+        $token = "u"  . random_string('unique', 30);
 
         if ($this->UserModel->userExist($email)) {
 
@@ -52,7 +52,8 @@ class AddEmployee extends CI_Controller {
             'add_permission' => $add,
             'update_permission' => $update,
             'delete_permission' => $delete,
-            'password_request' => $password_request
+            'password_request' => $password_request,
+            'token'              => $token   
 
         );
 

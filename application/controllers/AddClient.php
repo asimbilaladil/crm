@@ -11,6 +11,7 @@ class AddClient extends CI_Controller {
           redirect("Login/");
         }         
         $this->load->model('ClientModel');
+        $this->load->helper('string');
     }
 
     public function index() {
@@ -35,6 +36,7 @@ class AddClient extends CI_Controller {
         $address = $this->input->post('address', true);
         $service = $this->input->post('service', true);
         $status = $this->input->post('status', true);
+        $token = "c"  . random_string('unique', 30);
 
         $data = array (
             'firstname' => $firstName,
@@ -47,6 +49,7 @@ class AddClient extends CI_Controller {
             'service' => $address,
             'status' => $status,
             'company_id' => $_SESSION['company_id'],
+            'token'              => $token
         );
 
         if ($this->ClientModel->insert($data) > 0) {

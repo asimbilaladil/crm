@@ -7,6 +7,7 @@ class Signup extends CI_Controller {
         parent::__construct();
         $this->load->model('UserModel');
         $this->load->helper(array('form', 'url'));
+        $this->load->helper('string');
     }
 
     
@@ -24,6 +25,7 @@ class Signup extends CI_Controller {
         $email = $this->input->post('email', true);
         $password = $this->input->post('password', true);
         $confirmpassword = $this->input->post('confirmpassword', true);
+        $token = "u"  . random_string('unique', 30);
 
 
         if($password != $confirmpassword) {
@@ -45,9 +47,9 @@ class Signup extends CI_Controller {
             'type'               => 'COMPANY',
             'view_permission'    => 1,
             'update_permission'  => 1,
-            'delete_permission'  => 1
+            'delete_permission'  => 1,
+            'token'              => $token   
         );
-
 
         //update inserted id in companyId
         $insertedId = $this->UserModel->insert($data);
