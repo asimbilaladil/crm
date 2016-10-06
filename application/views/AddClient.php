@@ -11,11 +11,8 @@
                             <form class="form-horizontal" method="POST" action="<?php echo site_url('AddClient/save') ?>">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Add</strong> Client</h3>
+                                    <h3 class="panel-title"><strong>Add Client </strong></h3>
                                   
-                                </div>
-                                <div class="panel-body">
-                                    <p> Add your company employee </p>
                                 </div>
                                 <div class="panel-body"> 
 
@@ -69,8 +66,8 @@
                                         <label class="col-md-3 col-xs-12 control-label">Gender</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
-                                              <input type="radio" name="gender" name="gender" value="male"> Male<br>
-                                              <input type="radio" name="gender" name="gender" value="female"> Female<br>
+                                              <input type="radio" name="gender" name="gender" value="male" required> Male<br>
+                                              <input type="radio" name="gender" name="gender" value="female" required> Female<br>
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +108,11 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input required="" type="text" class="form-control" name="service">
+                                                <select class="form-control" name="service" required>
+                                                    <option value=""> Service 1 </option>
+                                                    <option value=""> Service 2 </option>
+                                                    <option value=""> Service 3 </option>
+                                                </select>
                                             </div>            
                                         </div>
                                     </div>
@@ -121,7 +122,11 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input required="" type="text" class="form-control" name="status">
+                                                <select class="form-control" name="status" required>
+                                                    <option value="active"> Active </option>
+                                                    <option value="disabled"> Disabled </option>
+                                                    <option value="lead"> Lead </option>
+                                                </select>                                                
                                             </div>            
                                         </div>
                                     </div>
