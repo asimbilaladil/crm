@@ -56,7 +56,9 @@
                     <li class="active">
                         <a href="<?php echo site_url("AddService") ?>"><span class="fa fa-user"></span> <span class="xn-text">Services</span></a>                        
                     </li>
-                  
+                    <li class="active">
+                        <a href="<?php echo site_url("Permissions") ?>"><span class="fa fa-user"></span> <span class="xn-text">Permissions</span></a>                        
+                    </li>                  
                                                         
                 </ul>
                 <!-- END X-NAVIGATION -->

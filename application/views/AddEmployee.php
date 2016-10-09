@@ -18,15 +18,19 @@
                                     <p> Add your company employee </p>
                                 </div>
                                 <div class="panel-body"> 
-                                    <?php if( isset( $_COOKIE['error'] ) && $_COOKIE['error'] == 1 ) {  ?>      
-                                     <div class="col-md-3">
-                                     </div>                                                               
-                                    <div style="width:50%" class=" alert alert-danger" role="alert">
-                           
-                                    <strong>Sorry!</strong> Email address already exists.
-                                    </div>
-                                    <br> <br> <br> <br>
+
+                                    <?php if($this->session->flashdata('UserSuccess')) { ?>                            
+                                        <div class="alert alert-success">
+                                          <strong><?php echo $this->session->flashdata('UserSuccess') ?></strong>
+                                        </div>
                                     <?php } ?>
+
+                                    <?php if($this->session->flashdata('UserFail')) { ?>                            
+                                        <div class="alert alert-danger">
+                                          <strong><?php echo $this->session->flashdata('UserFail') ?></strong>
+                                        </div>
+                                    <?php } ?>
+
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">First Name</label>
                                         <div class="col-md-6 col-xs-12">                                            
@@ -37,6 +41,19 @@
 
                                         </div>
                                     </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Initial</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                                <input required="" type="text" class="form-control" name="initial">
+                                            </div>                                            
+
+                                        </div>
+                                    </div>
+
                                    <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Last Name</label>
                                         <div class="col-md-6 col-xs-12">                                            
@@ -78,9 +95,14 @@
                                         <label class="col-md-3 col-xs-12 control-label">Permissions</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="checkbox">
-                                                <label> <input class="icheckbox" type="checkbox" value="1" name="add">&nbsp; Add </label> &nbsp;    
-                                                <label> <input class="icheckbox" type="checkbox" value="1" name="update">&nbsp;  Update </label> &nbsp;   
-                                                <label> <input class="icheckbox" type="checkbox" value="1" name="delete">&nbsp;  Delete </label>&nbsp;  
+
+                                            <?php
+                                                foreach ($data['permissions'] as $permission) {
+                                                    echo '<label> <input class="iradio" type="radio" value="'. $permission->id .'" name="permission"> '. $permission->type .' </label>';
+                                                }
+
+                                            ?>
+                                            
                                             </div>
 
                                         </div>
