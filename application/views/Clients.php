@@ -15,6 +15,7 @@
                                 <button type="button" class="btn btn-default">Add Client</button> 
                             </a>
                         </div>
+
                         <div id="DataTables_Table_0_filter" class="dataTables_filter">
                             <label>Search:
                                 <input type="search" id="searchTerm" onkeyup="doSearch()" placeholder="" >
