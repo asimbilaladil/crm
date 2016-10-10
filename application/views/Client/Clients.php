@@ -29,20 +29,26 @@
                                     <th>Firstname</th>
                                     <th>Lastname</th>
                                     <th>Email</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php  foreach ($data['clients'] as $key => $item) { ?>
                                  <tr>
                                     <td>
-                                        <a href= ' <?php echo site_url("ViewClient?token=".$item->token) ?>'>  <?php echo $item->firstname;  ?>  </a>
+                                        <a href= ' <?php echo site_url("Clients/view?token=".$item->token) ?>'>  <?php echo $item->firstname;  ?>  </a>
                                     </td>
                                     <td>
-                                        <a href= ' <?php echo site_url("ViewClient?token=".$item->token) ?>'>  <?php echo $item->lastname;  ?>  </a>
+                                        <a href= ' <?php echo site_url("Clients/view?token=".$item->token) ?>'>  <?php echo $item->lastname;  ?>  </a>
                                     </td>
                                     <td>
-                                        <a href= ' <?php echo site_url("ViewClient?token=".$item->token) ?>'>  <?php echo $item->email;  ?>  </a>
+                                        <a href= ' <?php echo site_url("Clients/view?token=".$item->token) ?>'>  <?php echo $item->email;  ?>  </a>
                                     </td>
+                                    <td> 
+                                        <a href= '<?php echo site_url("Clients/edit?token=".$item->token) ?>' >  Edit  </a>
+                                        <a onclick="return confirm('Delete', 'Are you sure you want to delete?')" href= '<?php echo site_url("Clients/delete?token=".$item->token) ?>'>  Delete  </a>
+                                    </td>
+
                                 </tr>
                             <?php } ?> 
                             </tbody>
