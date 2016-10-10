@@ -40,8 +40,12 @@ class ClientModel extends CI_Model {
         $this->db->from($this->tableName);
         $this->db->where('token', $token);
         $quary_result=$this->db->get();
-        $result = $quary_result->result();
+        $result = $quary_result->row();
         return $result;  
               
+    }
+
+    public function delete($token) {
+        $this->db->delete($this->tableName, array('token' => $token)); 
     }
 }

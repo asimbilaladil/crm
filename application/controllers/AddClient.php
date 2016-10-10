@@ -18,7 +18,7 @@ class AddClient extends CI_Controller {
 
 
         $this->load->view('common/header');
-        $this->load->view('AddClient');
+        $this->load->view('Client/AddClient');
         $this->load->view('common/footer');
         
     }
@@ -58,7 +58,7 @@ class AddClient extends CI_Controller {
             $this->session->set_flashdata('ClientFail', 'Error in createing client.');
         }
         
-        redirect('AddClient');
+        redirect('Client/AddClient');
 
     }  
 
