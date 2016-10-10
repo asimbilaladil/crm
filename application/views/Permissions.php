@@ -54,6 +54,36 @@
                                     </table>
 
 
+                                    <table class="table" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Page Access</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <?php
+
+                                                    foreach ($data['permissions'] as $permission) {
+                                                        echo '<tr> <td> '. $permission->type .' </td>';
+
+                                                        $pageAccess = json_decode($permission->page_access);
+                                                        $id = $permission->id;
+
+                                                        foreach ($data['pages'] as $page) {
+                                                            echo ' <td> <input class="icheckbox" type="checkbox" name="access'. $id .'[]" value="'. $page->page .'" '. (in_array($page->page, $pageAccess) ? 'checked' : '' ) .'> ' . $page->page . ' </input> </td>';
+                                                        }
+
+                                                        echo '</tr>';
+                                                    }
+                                                ?>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
                                 <div class="panel-footer">
                                     
                                     <button class="btn btn-primary pull-right">Submit</button>

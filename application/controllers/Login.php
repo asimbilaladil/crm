@@ -20,7 +20,7 @@ class Login extends CI_Controller {
         $password = md5($this->input->post('password'));
 
         $result = $this->UserModel->login($email, $password);
-
+        
         if ($result) {
 
             $data = array(
@@ -28,7 +28,8 @@ class Login extends CI_Controller {
                 'view_permission' => $result->view_permission,
                 'update_permission' => $result->update_permission,
                 'delete_permission' => $result->delete_permission,
-                'company_id' => $result->company_id
+                'company_id' => $result->company_id,
+                'page_access' => $result->page_access
             );
 
             $this->session->set_userdata($data);

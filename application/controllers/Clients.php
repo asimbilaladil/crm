@@ -7,7 +7,15 @@ class Clients extends CI_Controller {
         parent::__construct();
         if( !isset( $_SESSION['email']) ){
           redirect("Login/");
-        }         
+        }
+
+        $pageAccess = json_decode($this->session->userdata('page_access'));
+
+        if (!in_array('Clients', $pageAccess)) {
+            redirect("Home");
+        }
+
+
         $this->load->model('ClientModel');
     }
 
