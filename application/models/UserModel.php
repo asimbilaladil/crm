@@ -12,6 +12,7 @@ class UserModel extends CI_Model {
         $this->db->select('*');
         $this->db->from($this->tableName);
         $this->db->where('email', $email);
+        $this->db->join('permissions', 'users.permission = permissions.id');
         $this->db->where('password', $password);
         $quary_result=$this->db->get();
         $result=$quary_result->row();

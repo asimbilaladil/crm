@@ -17,6 +17,8 @@ class Permissions extends CI_Controller {
 
         $data['permissions'] = $this->PermissionModel->get();
 
+        $data['pages'] = $this->PermissionModel->getPages();
+
         $this->load->view('common/header');
         $this->load->view('Permissions', array('data' => $data));
         $this->load->view('common/footer');
@@ -27,13 +29,35 @@ class Permissions extends CI_Controller {
 
         $permissions = $this->PermissionModel->get();
 
-        $permissionTypes = array();
+        $this->updatePermission($permissions);
+
+        $this->updatePageAcess($permissions);
+
+        redirect('Permissions');
+
+    }
+
+
+    public function updatePageAcess($permissions) {
+
+        foreach ($permissions as $permission) {
+
+            if ($this->input->post('access' . $permission->id, true)) {
+                $access = json_encode($this->input->post('access' . $permission->id, true));
+            } else {
+                $access = '[]';
+            }
+
+            $this->PermissionModel->update('id', $permission->id, array('page_access' => $access));
+
+        }
+
+    }
+    public function updatePermission($permissions) {
 
         foreach ($permissions as $permission) {
 
             $item = array();
-
-            print_r( $this->input->post() ); 
 
             if ($this->input->post($permission->id, true)) {
                 
@@ -53,9 +77,7 @@ class Permissions extends CI_Controller {
                 
         }
 
-        redirect('Permissions');
-
-    }  
+    }
 
     //send  employee details  to employee
     public function sendEmail( $email, $message ) {

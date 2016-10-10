@@ -32,21 +32,10 @@ class PermissionModel extends CI_Model {
         return false;
     }
 
-    public function getClientsByCompany($company_id) {
+    public function getPages() {
 
         $this->db->select('*');
-        $this->db->from($this->tableName);
-        $this->db->where('company_id', $company_id);
-        $quary_result=$this->db->get();
-        $result = $quary_result->result();
-        return $result;  
-              
-    }    
-    public function getClient($token) {
-
-        $this->db->select('*');
-        $this->db->from($this->tableName);
-        $this->db->where('token', $token);
+        $this->db->from('pages');
         $quary_result=$this->db->get();
         $result = $quary_result->result();
         return $result;  
