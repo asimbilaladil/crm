@@ -11,6 +11,11 @@ class Permissions extends CI_Controller {
           redirect("Login/");
         }         
         $this->load->model('PermissionModel');
+        $pageAccess = json_decode($this->session->userdata('page_access'));
+
+        if (!in_array('Clients', $pageAccess)) {
+            redirect("Home");
+        }        
     }
 
     public function index() {
