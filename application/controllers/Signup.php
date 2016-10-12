@@ -48,6 +48,7 @@ class Signup extends CI_Controller {
             'view_permission'    => 1,
             'update_permission'  => 1,
             'delete_permission'  => 1,
+            'permission'  => 1,
             'token'              => $token   
         );
 

@@ -34,6 +34,8 @@
                                             <tr>
                                                 <th>Type</th>
                                                 <th>Permissions</th>
+                                                <th></th>
+                                                <th></th>                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,26 +61,28 @@
                                             <tr>
                                                 <th>Type</th>
                                                 <th>Page Access</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <?php
+                                             <?php
+
+                                                foreach ($data['pages'] as $page) {
+                                                    echo '<tr> <td> '. $page->page  .' </td>';
+
 
                                                     foreach ($data['permissions'] as $permission) {
-                                                        echo '<tr> <td> '. $permission->type .' </td>';
-
                                                         $pageAccess = json_decode($permission->page_access);
-                                                        $id = $permission->id;
-
-                                                        foreach ($data['pages'] as $page) {
-                                                            echo ' <td> <input class="icheckbox" type="checkbox" name="access'. $id .'[]" value="'. $page->page .'" '. (in_array($page->page, $pageAccess) ? 'checked' : '' ) .'> ' . $page->page . ' </input> </td>';
-                                                        }
-
-                                                        echo '</tr>';
+                                                                                        $id = $permission->id;
+                                                        echo ' <td> <input class="icheckbox" type="checkbox" name="access'. $id .'[]" value="'. $page->page .'" '. (in_array($page->page, $pageAccess) ? 'checked' : '' ) .'> ' .  $permission->type. ' </input> </td>';
                                                     }
-                                                ?>
 
+                                                    echo '</tr>';
+                                                }
+                                                ?>
                                             </tr>
                                         </tbody>
                                     </table>
