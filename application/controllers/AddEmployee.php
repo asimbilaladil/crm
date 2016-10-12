@@ -46,6 +46,7 @@ class AddEmployee extends CI_Controller {
             'company_id'    => $_SESSION['company_id'],
             'email'         => $email,
             'password'      => md5($this->input->post('password', true)),
+            'phone'         => $this->input->post('phone', true),
             'type'          => 'EMPLOYEE',
             'permission'    => $this->input->post('permission', true),
             'token'         => $token   

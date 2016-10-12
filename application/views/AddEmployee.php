@@ -83,6 +83,15 @@
                                             </div>            
                                         </div>
                                     </div>
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Phone Number</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+                                                <input required="" type="text" class="form-control" name="phone">
+                                            </div>            
+                                        </div>
+                                    </div>                                    
                                 <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Update Password</label>
                                         <div class="col-md-6 col-xs-12">                                            
