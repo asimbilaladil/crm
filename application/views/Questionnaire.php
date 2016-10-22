@@ -33,7 +33,7 @@
                                         <label class="col-md-3 col-xs-12 control-label">Number of Questions</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                                <span class="input-group-addon"><span class="fa fa-info-circle"></span></span>
                                                 <input required="" id="numberOfQuestion" type="number" class="form-control" name="numberOfQuestions">
                                             </div>
                                         </div>
@@ -82,7 +82,7 @@
             html += '<label class="col-md-3 col-xs-12 control-label"> Question ' + i + '</label>';
             html += '<div class="col-md-6 col-xs-12">';
             html += '<div class="input-group">';
-            html += '<span class="input-group-addon"><span class="fa fa-user"></span></span>';
+            html += '<span class="input-group-addon"><span class="fa fa-info-circle"></span></span>';
             html += '<input required="" id="question_' + i + '" type="text" class="form-control" name="question_' + i + '">';
             html += '</div>';
 
@@ -100,7 +100,7 @@
             html += '</div> ';
 
             //multi questions div. Create number of multiquestions in this div
-            html += '<div class="col-md-4 col-xs-4 input-group" id="multiQuestionsDiv_'+ i +'">';
+            html += '<div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_'+ i +'">';
             html += '</div>';
 
             html += '</div> </div>';
@@ -136,15 +136,15 @@
     }
 
     function createMultiOption(questions) {
-        var html = '';
+        var html = '<h5>Multiple Choice:</h5><br>';
 
         for(var i=1; i<=questions; i++) {
 
-            html += '<div class="form-group">';
-            html += '<label class="col-md-3 col-xs-12 control-label"> Multi Choice Question ' + i + '</label>';
+            html += '<div class="form-group col-md-12 col-xs-12">';
+            html += '<label class="col-md-3 col-xs-12 control-label"> Option' + i + ': </label>';
             html += '<div class="col-md-6 col-xs-12">';
             html += '<div class="input-group">';
-            html += '<span class="input-group-addon"><span class="fa fa-user"></span></span>';
+            html += '<span class="input-group-addon"><span class="fa fa-info-circle"></span></span>';
             html += '<input required="" id="multiQuestion_' + i + '" type="text" class="form-control" name="multiQuestion_' + i + '">';
             html += '</div> </div> </div>';
         }
