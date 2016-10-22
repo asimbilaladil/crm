@@ -59,7 +59,13 @@
                     <li class="active">
                         <a href="<?php echo site_url("Permissions") ?>"><span class="fa fa-user"></span> <span class="xn-text">Permissions</span></a>                        
                     </li>                  
-                                                        
+
+
+                    <li class="active">
+                        <a href="<?php echo site_url("Questionnaire") ?>"><span class="fa fa-user"></span> <span class="xn-text">Questionnaire</span></a>                        
+                    </li>                  
+
+             
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>

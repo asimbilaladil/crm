@@ -38,6 +38,8 @@
         <script type="text/javascript" src="<?php echo base_url("assets/js/plugins/bootstrap/bootstrap.min.js") ?>"></script>        
         <!-- END PLUGINS -->
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
         <!-- START THIS PAGE PLUGINS-->        
         <script type='text/javascript' src='<?php echo base_url("assets/js/plugins/icheck/icheck.min.js") ?>'></script>        
         <script type="text/javascript" src="<?php echo base_url("assets/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js") ?>"></script>
