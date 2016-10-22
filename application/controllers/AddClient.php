@@ -37,6 +37,7 @@ class AddClient extends CI_Controller {
         $service = $this->input->post('service', true);
         $status = $this->input->post('status', true);
         $token = "c"  . random_string('unique', 30);
+        $password = $this->input->post('password', true);
 
         $data = array (
             'firstname' => $firstName,
@@ -49,7 +50,8 @@ class AddClient extends CI_Controller {
             'service' => $address,
             'status' => $status,
             'company_id' => $_SESSION['company_id'],
-            'token'              => $token
+            'token'              => $token,
+            'password'       => md5($password)
         );
 
         if ($this->ClientModel->insert($data) > 0) {

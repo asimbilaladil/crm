@@ -60,8 +60,7 @@
                                             </div>                                            
 
                                         </div>
-                                    </div>
-
+                                    </div>                                   
                                     <div class="form-group">                                        
                                         <label class="col-md-3 col-xs-12 control-label">Gender</label>
                                         <div class="col-md-6 col-xs-12">
@@ -81,7 +80,17 @@
                                             </div>            
 
                                         </div>
-                                    </div>                                    
+                                    </div>
+                                   <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Password</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                                <input required="" type="password" class="form-control" name="password">
+                                            </div>                                            
+
+                                        </div>
+                                    </div>                                                                         
                                     <div class="form-group">                                        
                                         <label class="col-md-3 col-xs-12 control-label">Phone</label>
                                         <div class="col-md-6 col-xs-12">
