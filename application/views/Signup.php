@@ -49,7 +49,12 @@
                         </div>
                     </div>
                     
-                    <h4 class="login-subtitle">Authentication</h4>                    
+                    <h4 class="login-subtitle">Authentication</h4>   
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input id="company_username" type="text" class="form-control" name="company_username" placeholder="Username" oninput="checkUsername()" pattern=".{6,}" title="Must contain at least 6 or more characters"/>
+                        </div>
+                    </div>                                      
                     <div class="form-group">
                         <div class="col-md-12">
                             <input type="email" class="form-control" name="email" placeholder="Email"/>
@@ -93,6 +98,28 @@
   
     </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    var checkUsername = function checkUsername(){
+        var username  = $('#company_username').val();
+            if( username.length > 5){
+                
+                    var request = $.ajax({
+                        url: '<?php echo site_url('Signup/checkUsername') ?>',
+                        type: "POST",
+                        data: {company_username : username}
+                    });
+                    request.done(function (response, textStatus, jqXHR){
+                                // Log a message to the console
+                                console.log("Hooray, it worked!",jqXHR,'response',response,'textStatus',textStatus);
+                    });                
+            }
+    }
+
+
+
+</script>
 
 
 

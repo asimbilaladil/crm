@@ -26,6 +26,7 @@ class Signup extends CI_Controller {
         $password = $this->input->post('password', true);
         $confirmpassword = $this->input->post('confirmpassword', true);
         $token = "u"  . random_string('unique', 30);
+        $company_username = $this->input->post('company_username', true); 
 
 
         if($password != $confirmpassword) {
@@ -49,7 +50,8 @@ class Signup extends CI_Controller {
             'update_permission'  => 1,
             'delete_permission'  => 1,
             'permission'  => 1,
-            'token'              => $token   
+            'token'              => $token,  
+            'company_username'   => $company_username
         );
 
         //update inserted id in companyId
@@ -65,4 +67,12 @@ class Signup extends CI_Controller {
         redirect('login');
 
     }
+
+    public function checkUsername() {
+
+
+        $username = $this->input->post('company_username', true); 
+        error_log("$username---".$username);
+        return json_encode(array('data' => $username));
+    }    
 }
