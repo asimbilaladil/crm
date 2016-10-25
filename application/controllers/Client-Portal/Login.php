@@ -38,7 +38,19 @@ class Login extends CI_Controller {
         if ($result) {
 
             $data = array(
-                'company_username' => $result->company_username
+                'company_username' => $result->company_username,
+                'firstname' => $result->firstname,
+                'initial' => $result->initial,
+                'lastname' => $result->lastname,
+                'gender' => $result->gender,
+                'phone' => $result->phone,
+                'email' => $result->email,
+                'country' => $result->country,
+                'state' => $result->state,
+                'city' => $result->city,
+                'address' => $result->address,
+                'status' => $result->status,
+                'company_username' => $result->company_username                                              
             );
 
             $this->session->set_userdata($data);
