@@ -72,7 +72,11 @@ class Signup extends CI_Controller {
 
 
         $username = $this->input->post('company_username', true); 
-        error_log("$username---".$username);
-        return json_encode(array('data' => $username));
+        $result = $this->UserModel->getCompanyUsername($username);
+        if(count($result)){
+            echo '0';
+            return false;
+        } 
+        
     }    
 }
