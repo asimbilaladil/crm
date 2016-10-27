@@ -33,11 +33,11 @@
                         $count = 1;
                         foreach ($data['questions'] as $question) {
                             
-                        echo '<div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label"> Question '. $count++ .' </label>
+                        echo '    <br><div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label"> Question '. $count++ .': </label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
-                                        <span> '. $question['question'] .' </span>
+                                         <p >  '. $question['question'] .' </p>
                                     </div>
                                 </div>
                             </div>';
@@ -45,17 +45,17 @@
                             //multi selection 
                             if ($question['type'] == 'multi') {
                                 foreach ($question['multiQuestions'] as $item) {
-                                    echo '<div> <input class="icheckbox" type="checkbox" name="question_'. $question['question_id'] .'" value="'. $item .'"> '. $item .' </input> </div>';
+                                    echo ' <div class="col-md-3 col-xs-3"></div><div class="form-group"> <input class="icheckbox" type="checkbox" name="question_'. $question['question_id'] .'" value="'. $item .'"> '. $item .' </input> </div>';
                                 }
 
                             //text
                             } else {
-                                echo '<div> <input type="text" name="question_'. $question['question_id'] .'" /> </div>';
+                                echo '<div class="form-group"><div class="col-md-6 col-xs-12"> <input type="text" name="question_'. $question['question_id'] .'" /></div> </div>';
                             }
                         }
 
                     ?>
-
+            
                 </div>
                 <div class="panel-footer">
                     
