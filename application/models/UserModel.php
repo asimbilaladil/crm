@@ -67,4 +67,21 @@ class UserModel extends CI_Model {
         return $result;  
               
     }
+
+    /*
+     * Function Name: getCompanyUsername
+     * Description: Check company username exists or not already
+     * @params $userName
+     */
+    public function getCompanyUsername($userName) {
+
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('company_username', $userName);
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;  
+              
+    }
+     
 }

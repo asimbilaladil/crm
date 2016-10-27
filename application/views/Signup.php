@@ -30,7 +30,7 @@
                         </div>
                     <?php } ?>
 
-                    <form action="<?php echo site_url('Signup/save') ?>" class="form-horizontal" method="post">
+                    <form action="<?php echo site_url('Signup/save') ?>" class="form-horizontal" method="post" >
                         
                     <h4 class="login-subtitle">Personal info</h4>
                     <div class="form-group">
@@ -49,7 +49,13 @@
                         </div>
                     </div>
                     
-                    <h4 class="login-subtitle">Authentication</h4>                    
+                    <h4 class="login-subtitle">Authentication</h4>   
+                    <div class="form-group">
+                        <div class="col-md-12">
+                        <h4 id="errorMessage" style="color: red;"></h4>
+                            <input id="company_username" type="text" class="form-control" name="company_username" placeholder="Username" oninput="checkUsername()" pattern=".{6,}" title="Must contain at least 6 or more characters"/>
+                        </div>
+                    </div>                                      
                     <div class="form-group">
                         <div class="col-md-12">
                             <input type="email" class="form-control" name="email" placeholder="Email"/>
@@ -71,7 +77,7 @@
                             <a href="<?php echo site_url('Login') ?>" class="btn btn-link btn-block">Already have account?</a>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-danger btn-block">Sign Up</button>
+                            <button id="submitForm" class="btn btn-danger btn-block">Sign Up</button>
                         </div>
                     </div>
                     </form>
@@ -93,6 +99,34 @@
   
     </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    var checkUsername = function checkUsername(){
+        var username  = $('#company_username').val();
+
+            if( username.length > 5){
+   
+                $.post('<?php echo site_url('Signup/checkUsername') ?>', {
+                    company_username : username
+                }, function(data) {
+                    if (data == '0'){
+                        document.getElementById("errorMessage").innerHTML = 'Sorry username not available!';
+                        $('#submitForm').attr('disabled','disabled');
+                        return false;
+                    }
+                    document.getElementById("errorMessage").innerHTML = '';
+                    $('#submitForm').removeAttr("disabled");
+                
+                });  
+  
+            }
+
+    }
+
+
+
+</script>
 
 
 
