@@ -23,4 +23,28 @@ class QuestionnaireModel extends CI_Model {
         } 
         return false;
     }
+
+
+    public function getById($id) {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('id', $id);
+        $quary_result=$this->db->get();
+        $result=$quary_result->row();
+        return $result;
+    }
+
+    //get questions for Questionnaire
+    public function getQuestionnaireQuestions($id) {
+
+        $query = $this->db->query(
+            'SELECT ques.id as question_id, ques.question as question, ques.type, multiquest.id as multi_id, multiquest.question as muliquestion
+                FROM questions ques
+                LEFT JOIN multichoice_questions multiquest
+                ON ques.id = multiquest.question_id 
+                WHERE ques.questionnaire_id =' . $id);
+        $query->result();
+        return $query->result();
+
+    }
 }

@@ -21,7 +21,7 @@ class Questionnaire extends CI_Controller {
     public function index() {
 
         $this->load->view('common/header');
-        $this->load->view('Questionnaire');
+        $this->load->view('Questionnaire/Questionnaire');
         $this->load->view('common/footer');
 
     }
@@ -55,7 +55,7 @@ class Questionnaire extends CI_Controller {
                 
                 //iterating for muliti questions in a questions 
                 for ( $j = 1; $j <= $numberofMultiQuestions; $j++ ) {
-                    $multiqestion = $this->input->post('multiQuestion_' . $i);
+                    $multiqestion = $this->input->post('multiQuestion_' . $j);
 
                     $this->MultipleChoiceQuestionModel->insert( array(
                         'question_id'  => $questionInsertedId,
@@ -63,10 +63,55 @@ class Questionnaire extends CI_Controller {
                     ));                       
                     
                 }
+            }
+        }
+    }
 
+    /**
+     * Attempt questionnaire method.
+     */
+    public function attempt() {
+
+        $id = $this->input->get('id');
+
+        $questionnaire = $this->QuestionnaireModel->getQuestionnaireQuestions($id);
+
+        $idArray = array();
+        $questions = array();
+
+        foreach ($questionnaire as $item) {
+
+            if (in_array($item->question_id, $idArray)) {
+
+                $col = array_search($item->question_id, array_column($questions, 'question_id'));
+
+                array_push($questions[$col]['multiQuestions'], $item->muliquestion);
+
+            } else {
+                array_push($idArray, $item->question_id);
+
+                $questionItem = array(
+                    'question_id' => $item->question_id,
+                    'question' => $item->question,
+                    'type' => $item->type,
+                    'multiQuestions' => array()
+                );
+
+                if ($item->type == 'multi') {
+                    array_push($questionItem['multiQuestions'], $item->muliquestion);
+                }
+
+                array_push($questions, $questionItem);
             }
 
         }
 
+        $data['questions'] = $questions;
+
+
+
+        $this->load->view('common/header');
+        $this->load->view('Questionnaire/QuestionnaireAttempt', array('data' => $data));
+        $this->load->view('common/footer');        
     }
 }
