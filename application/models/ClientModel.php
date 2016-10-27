@@ -48,4 +48,23 @@ class ClientModel extends CI_Model {
     public function delete($token) {
         $this->db->delete($this->tableName, array('token' => $token)); 
     }
+
+    /*
+     * Function Name: login
+     * Description: authenticate user with its details if exists
+     * @param $email 
+     * @param $password 
+     * @param $id 
+     */
+    public function login($email, $password, $company_Username){
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('email', $email);
+        $this->db->where('password', $password);
+        $this->db->where('company_Username', $company_Username);
+        $quary_result=$this->db->get();
+        $result=$quary_result->row();
+        
+        return $result;
+    }
 }
