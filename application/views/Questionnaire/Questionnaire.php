@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
     <li><a href="#">Home</a></li>
-    <li class="active">Add Employee</li>
+    <li class="active">Add Questionnaire</li>
 </ul>
 <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
@@ -11,7 +11,7 @@
                             <form class="form-horizontal" method="POST" action="<?php echo site_url('Questionnaire/save') ?>">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Questionnaire</strong></h3>
+                                    <h3 class="panel-title"><strong>Create Questionnaire</strong></h3>
                                   
                                 </div>
 
