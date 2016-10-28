@@ -30,14 +30,25 @@
                                     <?php } ?>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Number of Questions</label>
-                                        <div class="col-md-6 col-xs-12">                                            
+                                        <label class="col-md-3 col-xs-3 control-label">Questionnaire Name:</label>
+                                        <div class="col-md-3 col-xs-3">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-info-circle"></span></span>
+                                                <input required=""  type="text" class="form-control" name="questionnaireName">
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-3 control-label">Number of Questions</label>
+                                        <div class="col-md-3 col-xs-3">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-info-circle"></span></span>
                                                 <input required="" id="numberOfQuestion" type="number" class="form-control" name="numberOfQuestions">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 col-xs-12 ">
+                                        <div class="col-md-3 col-xs-3 ">
                                              <input type="button" class="btn btn-primary" id="createQuest" value="Create" />
                                         </div>
                                     </div>

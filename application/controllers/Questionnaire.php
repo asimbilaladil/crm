@@ -30,6 +30,7 @@ class Questionnaire extends CI_Controller {
     public function save() {
 
         $totalQuestions = $this->input->post('numberOfQuestions', true);
+        $questionnaireName = $this->input->post('questionnaireName', true);
 
         //insert questionnaire
         $insertedId = $this->QuestionnaireModel->insert( array(
