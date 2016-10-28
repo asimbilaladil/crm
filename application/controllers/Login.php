@@ -24,6 +24,7 @@ class Login extends CI_Controller {
         if ($result) {
 
             $data = array(
+                'id' => $result->id,
                 'email' => $result->email,
                 'view_permission' => $result->view_permission,
                 'update_permission' => $result->update_permission,

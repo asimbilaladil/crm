@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-12">
             
-            <form class="form-horizontal" method="POST" action="">
+            <form class="form-horizontal" method="POST" action="<?php echo site_url('QuestionnaireAttempt/save') ?>" >
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>Attempt Questionnaire</strong></h3>
@@ -29,31 +29,41 @@
                         </div>
                     <?php } ?>
 
+
+                    <input type="hidden" name="questionnaireId" value="<?php echo $data['questionnaireId'] ?>" />
+
                     <?php
-                        $count = 1;
+                        $count = 0;
                         foreach ($data['questions'] as $question) {
-                            
-                        echo '    <br><div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label"> Question '. $count++ .': </label>
-                                
-                                    
-                                         <p style="padding-top: 7px;" class="col-md-6 col-xs-12" >  '. $question['question'] .' </p>
-                                   
-                               
+
+                        $count = $count + 1;
+                        echo '<br><div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label"> Question '. $count .': </label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                         <p style="padding-top: 7px;"  class="col-md-6 col-xs-12" >  '. $question['question'] .' </p>
+                                         <input type="hidden" name="questionId_'. $count .'" value="'. $question['question_id'] .'" />
+                                         <input type="hidden" name="totalQuestions" value="'. $count .'" />
+                                         <input type="hidden" name="questionType_'. $count .'" value="'. $question['type'] .'" />
+                                    </div>
+                                </div>
+
                             </div>';
 
                             //multi selection 
                             if ($question['type'] == 'multi') {
                                 foreach ($question['multiQuestions'] as $item) {
-                                    echo ' <div class="col-md-3 col-xs-3"></div><div class="form-group col-md-9 col-xs-9"> <input class="icheckbox" type="checkbox" name="question_'. $question['question_id'] .'" value="'. $item .'"> &nbsp;&nbsp;'. $item .' </input> </div>';
-                                }
 
+                                    echo ' <div class="col-md-3 col-xs-3"></div><div class="form-group col-md-9 col-xs-9"> <input class="iradio" type="radio" name="answer_'. $count .'" value="'. $item .'"> &nbsp;&nbsp;'. $item .' </input> </div>';
+
+                                }
                             //text
                             } else {
-                                echo '<div class="col-md-3 col-xs-3"></div><div class="form-group col-md-9 col-xs-9"> <input style="width: 50%;" type="text" name="question_'. $question['question_id'] .'" /></div>';
+
+                                echo '<div class="col-md-3 col-xs-3"></div><div class="form-group col-md-6 col-xs-12"> <input  style="width: 50%;" type="text" name="answer_'. $count .'" /></div>';
+
                             }
                         }
-
                     ?>
             
                 </div>
@@ -69,4 +79,4 @@
                     
 </div>
 <!-- END PAGE CONTENT WRAPPER -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 
