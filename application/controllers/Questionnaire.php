@@ -34,7 +34,9 @@ class Questionnaire extends CI_Controller {
 
         //insert questionnaire
         $insertedId = $this->QuestionnaireModel->insert( array(
-            'user_id' => ''
+            'user_id' =>  $this->session->userdata('id'),
+            'name' => $questionnaireName,
+            'company_id' =>  $this->session->userdata('company_id')
         ));
 
         //iterating on number of questions
