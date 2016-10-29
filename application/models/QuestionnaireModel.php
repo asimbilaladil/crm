@@ -47,4 +47,23 @@ class QuestionnaireModel extends CI_Model {
         return $query->result();
 
     }
+
+
+    /*
+     * Function Name: getByCompanyId
+     * Description: Get Questionnaire by company Id
+     * @param $company_id 
+     */
+    
+    public function getByCompanyId($company_id) {
+
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('company_id', $company_id);
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        
+        return $result;
+    }
+
 }
