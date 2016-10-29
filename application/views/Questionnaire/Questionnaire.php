@@ -27,6 +27,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,6 +38,12 @@
                                     </td>
                                     <td>
                                         <?php echo $item->name;  ?>  
+                                    </td>
+                                    <td style="width: 10%;">
+                                         <a href="">
+                                            <button type="button" class="btn btn-default">Publish
+                                            </button> 
+                                        </a>
                                     </td>
                                 </tr>
                             <?php } ?>   
