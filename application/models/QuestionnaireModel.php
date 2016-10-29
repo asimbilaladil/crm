@@ -85,6 +85,25 @@ class QuestionnaireModel extends CI_Model {
             return true;
         } 
         return false;
-    }       
+    }  
+
+    /*
+     * Function Name: getPublishQuestionnaire
+     * Description: Get company publish Questionnaire 
+     * @param $company_id    
+     */
+
+    public function getPublishQuestionnaire( $company_id ){
+
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('company_id', $company_id);
+        $this->db->where('status', 'publish');
+        $this->db->join('publish_questionnaire', 'publish_questionnaire.questionnaire_id = questionnaire.id');
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        
+        return $result;
+    }
 
 }

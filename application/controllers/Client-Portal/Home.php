@@ -6,6 +6,8 @@ class Home extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('ClientModel');
+        $this->load->model('QuestionnaireModel');
+        
     }
 
     
@@ -16,8 +18,12 @@ class Home extends CI_Controller {
      */
 
     public function index() {
+        
+        $company_id = $this->session->userdata('company_id');
+        $data['Questionnaire'] = $this->QuestionnaireModel->getPublishQuestionnaire($company_id);
 
         $this->load->view('common/header');
+        $this->load->view('Client-Portal/Home', array('data' => $data));
         $this->load->view('common/footer');
 
     } 
