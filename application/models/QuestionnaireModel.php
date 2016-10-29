@@ -60,10 +60,31 @@ class QuestionnaireModel extends CI_Model {
         $this->db->select('*');
         $this->db->from($this->tableName);
         $this->db->where('company_id', $company_id);
+        $this->db->where('status !=', 'publish');
         $quary_result=$this->db->get();
         $result = $quary_result->result();
         
         return $result;
     }
+
+    /*
+     * Function Name: updateStatus
+     * Description: Get Questionnaire by company Id
+     * @param $questionnaire_id 
+     * @param $status      
+     */
+
+    public function updateStatus( $questionnaire_id ,$status ){
+        
+        $data = array (
+                'status' => $status 
+            );
+        $this->db->where( 'id', $questionnaire_id );
+        $result = $this->db->update( $this->tableName ,$data);
+        if ( $result ) {
+            return true;
+        } 
+        return false;
+    }       
 
 }
