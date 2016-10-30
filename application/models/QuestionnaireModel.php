@@ -100,8 +100,9 @@ class QuestionnaireModel extends CI_Model {
         $this->db->from($this->tableName);
         $this->db->where('company_id', $company_id);
         $this->db->where('status', 'publish');
+        $this->db->where('publish_questionnaire.expire_date >=', date("Y-m-d") );
         $this->db->join('publish_questionnaire', 'publish_questionnaire.questionnaire_id = questionnaire.id');
-        $this->db->join('questionnaire_attempt', 'questionnaire_attempt.questionnaire_id = questionnaire.id');
+        //$this->db->join('questionnaire_attempt', 'questionnaire_attempt.questionnaire_id = questionnaire.id');
         $quary_result=$this->db->get();
         $result = $quary_result->result();
         
