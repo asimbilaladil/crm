@@ -50,7 +50,8 @@ class Login extends CI_Controller {
                 'city' => $result->city,
                 'address' => $result->address,
                 'status' => $result->status,
-                'company_id' => $result->company_id                                              
+                'company_id' => $result->company_id,  
+                'id' => $result->id                                              
             );
 
             $this->session->set_userdata($data);
