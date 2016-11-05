@@ -31,6 +31,7 @@
 
 
                     <input type="hidden" name="questionnaireId" value="<?php echo $data['questionnaireId'] ?>" />
+                    <input type="hidden" name="publishId" value="<?php echo $data['publishId'] ?>" />
 
                     <?php
                         $count = 0;
