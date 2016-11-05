@@ -60,10 +60,13 @@
                         <a href="<?php echo site_url("Permissions") ?>"><span class="fa fa-user"></span> <span class="xn-text">Permissions</span></a>                        
                     </li>                  
 
+                    <li class="active">
+                        <a href="<?php echo site_url("Questionnaire") ?>"><span class="fa fa-user"></span> <span class="xn-text">Questionnaire</span></a>
+                    </li>
 
                     <li class="active">
-                        <a href="<?php echo site_url("Questionnaire") ?>"><span class="fa fa-user"></span> <span class="xn-text">Questionnaire</span></a>                        
-                    </li>                  
+                        <a href="<?php echo site_url("Report") ?>"><span class="fa fa-user"></span> <span class="xn-text">Questionnaire Report</span></a>
+                    </li>
 
              
                 </ul>

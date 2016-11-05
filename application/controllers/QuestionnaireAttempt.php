@@ -10,6 +10,7 @@ class QuestionnaireAttempt extends CI_Controller {
         $this->load->model('MultipleChoiceQuestionModel');
         $this->load->model('QuestionnaireAttemptModel');
         $this->load->model('QuestionnaireAnswerModel');
+        $this->load->model('PublishModel');
     }
 
      /**
@@ -18,7 +19,11 @@ class QuestionnaireAttempt extends CI_Controller {
       */
     public function index() {
 
-        $id = $this->input->get('id');
+        $publishId = $this->input->get('id');
+
+        $publish = $this->PublishModel->getById($publishId);
+
+        $id = $publish->questionnaire_id;
 
         $questionnaire = $this->QuestionnaireModel->getQuestionnaireQuestions($id);
 
@@ -54,6 +59,7 @@ class QuestionnaireAttempt extends CI_Controller {
 
         $data['questions'] = $questions;
         $data['questionnaireId'] = $id;
+        $data['publishId'] = $publishId;
 
         $this->load->view('common/header');
         $this->load->view('Questionnaire/QuestionnaireAttempt', array('data' => $data));
@@ -66,10 +72,13 @@ class QuestionnaireAttempt extends CI_Controller {
         $questionnaireId = $this->input->post('questionnaireId');
         $totalQuestion = $this->input->post('totalQuestions');
         $questionType = $this->input->post('questionType');
+        $publishId = $this->input->post('publishId');
+        
 
         $insertedId = $this->QuestionnaireAttemptModel->insert( array(
             'questionnaire_id' => $questionnaireId,
-            'user_id'          => $userId
+            'user_id'          => $userId,
+            'publish_id'       => $publishId
         ));
 
         for ( $i=1 ; $i <= $totalQuestion; $i++ ) {

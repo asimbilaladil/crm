@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" method="POST" action="<?php echo site_url('Questionnaire/save') ?>">
+                            <form class="form-horizontal" method="POST" action="<?php echo site_url('AddQuestionnaire/save') ?>">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Create Questionnaire</strong></h3>
