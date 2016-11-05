@@ -8,7 +8,6 @@ class PublishModel extends CI_Model {
         parent::__construct();
     }
 
-
     /*
      * Function Name: Insert
      * Description: Insert publish questionnaire data
@@ -23,5 +22,13 @@ class PublishModel extends CI_Model {
         return -1 ;
     }
 
+    public function getById($id) {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('id', $id);
+        $quary_result=$this->db->get();
+        $result=$quary_result->row();
+        return $result;
+    }
 
 }
