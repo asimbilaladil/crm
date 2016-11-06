@@ -23,9 +23,9 @@ class Home extends CI_Controller {
         $user_id = $this->session->userdata('id');
         $data['Questionnaire'] = $this->QuestionnaireModel->getPublishQuestionnaire($company_id, $user_id);
 
-        $this->load->view('common/header');
+        $this->load->view('Client-Portal/common/header');
         $this->load->view('Client-Portal/Home', array('data' => $data));
-        $this->load->view('common/footer');
+        $this->load->view('Client-Portal/common/footer');
 
     } 
 }
