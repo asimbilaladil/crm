@@ -39,19 +39,19 @@ class Report extends CI_Controller {
         $reportData = array();
 
         foreach ($report as $item) {
+            $x = array();
+        
+            array_push($x, $item->question);
+            array_push($x, intval( $item->answerCount ));
 
-            array_push($reportData, array(
-                $item->question => $item->answerCount
-            ));
+            array_push($reportData, $x);
+
         }
 
-        echo json_encode($reportData);
-        //print_r($report);
-        die;
-
         $this->load->view('common/header');
-        $this->load->view('ViewReport');
+        $this->load->view('ViewReport', array( 'data' => $reportData));
         $this->load->view('common/footer');
+
 
     }
 
