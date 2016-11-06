@@ -22,6 +22,25 @@ class PublishModel extends CI_Model {
         return -1 ;
     }
 
+    public function getall() {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $quary_result=$this->db->get();
+        $result=$quary_result->result();
+        return $result;
+    }
+
+
+    public function getPublishQuestionnaire() {
+
+        $query = $this->db->query(
+            'SELECT questionnaire.id as questionnaireId, questionnaire.name as name, publish_questionnaire.id as publishId FROM publish_questionnaire, questionnaire
+            WHERE publish_questionnaire.questionnaire_id = questionnaire.id' );
+        $query->result();
+        return $query->result();
+
+    }
+
     public function getById($id) {
         $this->db->select('*');
         $this->db->from($this->tableName);
