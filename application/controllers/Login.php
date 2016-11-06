@@ -30,7 +30,8 @@ class Login extends CI_Controller {
                 'update_permission' => $result->update_permission,
                 'delete_permission' => $result->delete_permission,
                 'company_id' => $result->company_id,
-                'page_access' => $result->page_access
+                'page_access' => $result->page_access,
+                'company_username' => $result->company_username
             );
 
             $this->session->set_userdata($data);

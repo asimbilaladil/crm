@@ -51,7 +51,8 @@ class AddClient extends CI_Controller {
             'status' => $status,
             'company_id' => $_SESSION['company_id'],
             'token'              => $token,
-            'password'       => md5($password)
+            'password'       => md5($password),
+            'company_username' => $_SESSION['company_username']
         );
 
         if ($this->ClientModel->insert($data) > 0) {
@@ -60,7 +61,7 @@ class AddClient extends CI_Controller {
             $this->session->set_flashdata('ClientFail', 'Error in createing client.');
         }
         
-        redirect('Client/AddClient');
+        redirect('/AddClient');
 
     }  
 
