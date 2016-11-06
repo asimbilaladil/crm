@@ -37,7 +37,7 @@
                                     </td>
                                     <td style="width: 10%;">
 
-                                       <a href="<?php echo site_url('QuestionnaireAttempt?id='.$item->id) ?>"> <button  type="button" class="btn btn-default">View
+                                       <a href="<?php echo site_url('client/questionnaire/'.$item->token) ?>"> <button  type="button" class="btn btn-default">View
                                         </button> </a>
 
                                     </td>

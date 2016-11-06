@@ -50,4 +50,12 @@ class PublishModel extends CI_Model {
         return $result;
     }
 
+    public function getByToken($token) {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('token', $token);
+        $quary_result=$this->db->get();
+        $result=$quary_result->row();
+        return $result;
+    }
 }

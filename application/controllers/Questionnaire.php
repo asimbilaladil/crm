@@ -12,7 +12,8 @@ class Questionnaire extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('QuestionnaireModel');  
-        $this->load->model('PublishModel');        
+        $this->load->model('PublishModel');
+        $this->load->helper('string');        
     }
 
     /*
@@ -45,7 +46,8 @@ class Questionnaire extends CI_Controller {
             'publish_date' => $publish_date,
             'expire_date' => $expire_date,
             'questionnaire_id' => $questionnaire_id,
-            'type' => $type
+            'type' => $type,
+            'token' => random_string('unique', 50)
             );       
         $this->PublishModel->insert($data);
         $this->QuestionnaireModel->updateStatus($questionnaire_id, 'publish');

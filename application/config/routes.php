@@ -53,5 +53,6 @@ $route['default_controller'] = 'home';
 $route['client/login/(:any)'] = 'Client-Portal/Login/index/$id';
 $route['client/home'] = 'Client-Portal/Home/index';
 $route['client/logout'] = 'Client-Portal/Login/logout';
+$route['client/questionnaire/(:any)'] = 'QuestionnaireAttempt/index/$id';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

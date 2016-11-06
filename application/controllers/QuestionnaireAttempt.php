@@ -19,10 +19,10 @@ class QuestionnaireAttempt extends CI_Controller {
       */
     public function index() {
 
-        $publishId = $this->input->get('id');
-
-        $publish = $this->PublishModel->getById($publishId);
-
+        //$publishToken = $this->input->get('token');
+        $publishToken = $this->uri->segment(3);
+        $publish = $this->PublishModel->getByToken($publishToken);
+        $publishId = $publish->id;
         $id = $publish->questionnaire_id;
 
         $questionnaire = $this->QuestionnaireModel->getQuestionnaireQuestions($id);
@@ -94,7 +94,7 @@ class QuestionnaireAttempt extends CI_Controller {
             ));
 
         }
-
+        redirect('client/home');
     }
 
 }
