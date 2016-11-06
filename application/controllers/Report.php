@@ -7,7 +7,7 @@ class Report extends CI_Controller {
     function __construct() {
         parent::__construct();
         if( !isset( $_SESSION['email']) ){
-          redirect("Login/");
+          //redirect("Login/");
 
         }
 
@@ -43,7 +43,6 @@ class Report extends CI_Controller {
         
             array_push($x, $item->question);
             array_push($x, intval( $item->answerCount ));
-
             array_push($reportData, $x);
 
         }

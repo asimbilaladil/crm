@@ -51,7 +51,8 @@ class Login extends CI_Controller {
                 'address' => $result->address,
                 'status' => $result->status,
                 'company_id' => $result->company_id,  
-                'id' => $result->id                                              
+                'id' => $result->id,
+                'user_type' => 'client'                                              
             );
 
             $this->session->set_userdata($data);

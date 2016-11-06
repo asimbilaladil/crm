@@ -30,6 +30,7 @@
   <script type="text/javascript">
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
+
     function drawChart() {
     
     var reportData = <?php  echo json_encode($data); ?>;
@@ -40,7 +41,7 @@
 
     var data = google.visualization.arrayToDataTable(reportData);
 
-      var data = google.visualization.arrayToDataTable(reportData);
+
 
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
@@ -48,6 +49,9 @@
                          sourceColumn: 1,
                          type: "string",
                          role: "annotation" }]);
+
+
+
       var options = {
         width: 600,
         height: 400,
@@ -57,4 +61,6 @@
       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
       chart.draw(view, options);
   }
+
   </script>
+
