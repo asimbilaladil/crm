@@ -11,8 +11,9 @@
                 <div class="panel-body">
                     <div class="table-responsive">
 
-                        <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
-
+                         <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+                             
+                         </div>
 
                     </div>
                 </div>
@@ -23,6 +24,7 @@
 </div>
 <!-- END PAGE CONTENT WRAPPER -->
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
@@ -32,14 +34,14 @@
     function drawChart() {
     
     var reportData = <?php  echo json_encode($data); ?>;
-    console.log(reportData)
-      var data = google.visualization.arrayToDataTable([
-        ["Answers", "Count" ],
-        ["Copper", 8.94],
-        ["Silver", 10.49],
-        ["Gold", 19.30],
-        ["Platinum", 21.45]
-      ]);
+
+    var header = ['question', 'answer'];
+
+    reportData.unshift(header);
+
+    var data = google.visualization.arrayToDataTable(reportData);
+
+
 
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
@@ -47,6 +49,8 @@
                          sourceColumn: 1,
                          type: "string",
                          role: "annotation" }]);
+
+
 
       var options = {
         width: 600,
@@ -57,5 +61,6 @@
       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
       chart.draw(view, options);
   }
+
   </script>
 
