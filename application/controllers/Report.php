@@ -7,7 +7,7 @@ class Report extends CI_Controller {
     function __construct() {
         parent::__construct();
         if( !isset( $_SESSION['email']) ){
-          redirect("Login/");
+          //redirect("Login/");
 
         }
 
@@ -41,16 +41,12 @@ class Report extends CI_Controller {
         foreach ($report as $item) {
 
             array_push($reportData, array(
-                $item->question => $item->answerCount
+                $item->question => intval( $item->answerCount )
             ));
         }
 
-        echo json_encode($reportData);
-        //print_r($report);
-        die;
-
         $this->load->view('common/header');
-        $this->load->view('ViewReport');
+        $this->load->view('ViewReport', array( 'data' => $reportData));
         $this->load->view('common/footer');
 
     }
