@@ -9,12 +9,9 @@
             <!-- START DEFAULT DATATABLE -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive" id="graphs">
 
-                         <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
-                             
-                         </div>
-
+                
                     </div>
                 </div>
             </div>
@@ -23,6 +20,7 @@
     </div>
 </div>
 <!-- END PAGE CONTENT WRAPPER -->
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -35,22 +33,57 @@
     
     var reportData = <?php  echo json_encode($data); ?>;
 
-    var header = ['question', 'answer'];
+    var questionsArray = [];
+    var answersArray = [];
 
-    reportData.unshift(header);
+    for (item in reportData) {
 
-    var data = google.visualization.arrayToDataTable(reportData);
+      var question = reportData[item][0];
+      var count = reportData[item][1];
+      var answer = reportData[item][2];
+
+      //if key does not exist in question array.
+      if (questionsArray.indexOf(question) <= 0) {
+        questionsArray.push(question);
+        answersArray[question] = [];
+      }
+
+      answersArray[question].push([
+        answer,
+        count
+      ]);
+    }
+
+    makeHtml(questionsArray);
+    makeGraphs(questionsArray, answersArray);
 
 
+  }
 
+  function makeGraphs(questionsArray, answersArray) {
+
+    var header = [
+      'answer',
+      'count'
+    ];
+
+    for (x in questionsArray) {
+      var key = questionsArray[x];
+      answersArray[key].unshift(header);
+
+      var key = questionsArray[x];
+      
+      var divId = key.replace(' ', '_');
+
+      var data = google.visualization.arrayToDataTable(answersArray[key]);
       var view = new google.visualization.DataView(data);
+
       view.setColumns([0, 1,
-                       { calc: "stringify",
+                      { calc: "stringify",
                          sourceColumn: 1,
                          type: "string",
-                         role: "annotation" }]);
-
-
+                         role: "annotation" 
+                      }]);
 
       var options = {
         width: 600,
@@ -58,8 +91,29 @@
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };
-      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+
+      var chart = new google.visualization.ColumnChart(document.getElementById(divId));
       chart.draw(view, options);
+
+    }
+
+  }
+
+  function makeHtml(questionsArray) {
+
+    var div = document.getElementById('graphs');
+    var html = '';
+
+    for(key in questionsArray) {
+
+      var key = questionsArray[key];
+      var divId = key.replace(' ', '_');
+
+      html = html + '<div id="' + divId + '" style="width: 300px; height: 600px;"></div>  </div>';
+    }
+
+    div.innerHTML = html;
+
   }
 
   </script>

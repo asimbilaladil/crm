@@ -43,10 +43,11 @@ class Report extends CI_Controller {
         
             array_push($x, $item->question);
             array_push($x, intval( $item->answerCount ));
+            array_push($x, $item->answer );
             array_push($reportData, $x);
 
         }
-
+        
         $this->load->view('common/header');
         $this->load->view('ViewReport', array( 'data' => $reportData));
         $this->load->view('common/footer');
