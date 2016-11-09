@@ -109,7 +109,7 @@
       var key = questionsArray[key];
       var divId = key.replace(' ', '_');
 
-      html = html + '<div id="' + divId + '" style="width: 300px; height: 600px;"></div>  </div>';
+      html = html + '<h2> '+ key +' </h2><div id="' + divId + '" style="width: 300px; height: 600px;"></div>  </div>';
     }
 
     div.innerHTML = html;
