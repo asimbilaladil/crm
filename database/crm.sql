@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 05, 2016 at 11:17 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Host: localhost
+-- Generation Time: Nov 09, 2016 at 09:04 PM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -163,18 +163,20 @@ CREATE TABLE `publish_questionnaire` (
   `publish_date` date NOT NULL,
   `expire_date` date NOT NULL,
   `type` text NOT NULL,
-  `questionnaire_id` int(50) NOT NULL
+  `questionnaire_id` int(50) NOT NULL,
+  `token` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `publish_questionnaire`
 --
 
-INSERT INTO `publish_questionnaire` (`id`, `user_id`, `publish_date`, `expire_date`, `type`, `questionnaire_id`) VALUES
-(4, 1, '2016-10-29', '2016-10-29', 'public', 3),
-(5, 1, '2016-10-30', '2016-10-31', 'private', 4),
-(6, 1, '2016-10-30', '2016-11-01', 'public', 3),
-(7, 1, '2016-11-05', '2016-11-12', 'public', 5);
+INSERT INTO `publish_questionnaire` (`id`, `user_id`, `publish_date`, `expire_date`, `type`, `questionnaire_id`, `token`) VALUES
+(4, 1, '2016-10-29', '2016-10-29', 'public', 3, ''),
+(5, 1, '2016-10-30', '2016-10-31', 'private', 4, ''),
+(6, 1, '2016-10-30', '2016-11-01', 'public', 3, ''),
+(7, 1, '2016-11-05', '2016-11-12', 'public', 5, ''),
+(8, 1, '2016-11-06', '2016-11-06', 'public', 6, '77c547d4088dde1612db8f26883f4cfe');
 
 -- --------------------------------------------------------
 
@@ -199,7 +201,8 @@ INSERT INTO `questionnaire` (`id`, `user_id`, `company_id`, `name`, `status`) VA
 (2, 0, 0, '', ''),
 (3, 1, 2, 'Hello', 'publish'),
 (4, 1, 2, 'test', 'publish'),
-(5, 1, 0, 'Hello world ', 'publish');
+(5, 1, 0, 'Hello world ', 'publish'),
+(6, 1, 2, 'Testing Questionnaire', 'publish');
 
 -- --------------------------------------------------------
 
@@ -228,7 +231,13 @@ INSERT INTO `questionnaire_answer` (`id`, `question_id`, `attempt_id`, `answer`)
 (7, 9, 2, 'sdfsdfsdfsd'),
 (8, 8, 3, 'multi choice question 2'),
 (9, 7, 3, '123'),
-(10, 9, 3, '43235');
+(10, 9, 3, '43235'),
+(11, 5, 4, 'Hello'),
+(12, 8, 5, 'multi choice question 1 '),
+(13, 7, 5, '123'),
+(14, 9, 5, '32131231231231231231'),
+(15, 10, 6, '1'),
+(16, 10, 7, '1');
 
 -- --------------------------------------------------------
 
@@ -248,7 +257,9 @@ CREATE TABLE `questionnaire_attempt` (
 --
 
 INSERT INTO `questionnaire_attempt` (`id`, `questionnaire_id`, `publish_id`, `user_id`) VALUES
-(3, 5, 7, 1);
+(3, 5, 7, 1),
+(4, 3, 4, 1),
+(5, 5, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -276,7 +287,8 @@ INSERT INTO `questions` (`id`, `questionnaire_id`, `question`, `type`) VALUES
 (6, 4, 'test 1', 'text'),
 (7, 5, 'question 1', 'text'),
 (8, 5, 'question 2', 'multi'),
-(9, 5, 'question 3', 'text');
+(9, 5, 'question 3', 'text'),
+(10, 6, 'what is your age', 'text');
 
 -- --------------------------------------------------------
 
@@ -352,7 +364,7 @@ INSERT INTO `users` (`id`, `firstname`, `initial`, `lastname`, `phone`, `company
 (2, 'Asim', '', 'Bilal', '', 'Asim-Company', 'asim@mail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'COMPANY', 1, '', '2016-10-22 13:51:52', 0, 2, 1, 1, 1, 0, ''),
 (3, 'Asim1', '', 'Bilal1', '', '', 'asimbilal@mail.com', '202cb962ac59075b964b07152d234b70', 'EMPLOYEE', 0, '', '2016-11-05 03:15:40', 0, 2, 0, 1, 0, 0, ''),
 (4, 'avsd', 'fsdf', 'xyc', '', '', 'abc@gmil.com', '220466675e31b9d20c051d5e57974150', 'EMPLOYEE', 0, 'u7d0bad82c8d0532656f3a0d4d7250923', '2016-10-09 03:12:09', 0, 0, 0, 0, 0, 0, ''),
-(5, 'random', 'random', 'random', '', '', 'm0ix@live.com', '7ddf32e17a6ac5ce04a8ecbf782ca509', 'EMPLOYEE', 1, 'u539712d36b3914d76335b1782e98896e', '2016-10-09 03:20:06', 0, 0, 0, 0, 0, 0, ''),
+(5, 'random', 'random', 'random', '', '', 'm0ix@live.com', '202cb962ac59075b964b07152d234b70', 'EMPLOYEE', 1, 'u539712d36b3914d76335b1782e98896e', '2016-11-06 01:08:07', 0, 0, 0, 0, 0, 0, ''),
 (6, 'Admin', '', 'Admin', '', 'admin', 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', 'COMPANY', 1, 'u7793c439a9cd38b64ca9f41839d92353', '2016-10-10 14:25:45', 0, 0, 1, 1, 1, 0, ''),
 (7, 'Test', '', 'User', '', 'Test Company', 'test@mail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'COMPANY', 1, 'u7bf3fd000cffd29c5b437f12b9e63e93', '2016-10-12 13:53:04', 0, 7, 1, 1, 1, 0, ''),
 (8, 'Test1', 'TU', 'User1', '', '', 'test-user1@mail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'EMPLOYEE', 2, 'u15f14186ece0ce97ab24d08c345456f1', '2016-10-12 14:04:07', 0, 7, 0, 0, 0, 0, ''),
@@ -475,27 +487,27 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `publish_questionnaire`
 --
 ALTER TABLE `publish_questionnaire`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `questionnaire`
 --
 ALTER TABLE `questionnaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `questionnaire_answer`
 --
 ALTER TABLE `questionnaire_answer`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `questionnaire_attempt`
 --
 ALTER TABLE `questionnaire_attempt`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `sample`
 --
