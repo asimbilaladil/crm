@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
     <li><a href="#">Home</a></li>
-    <li class="active">Add Questionnaire</li>
+    <li class="active">Add Employee</li>
 </ul>
 <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
@@ -8,10 +8,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" method="POST" action="<?php echo site_url('AddQuestionnaire/save') ?>">
+                            <form class="form-horizontal" method="POST" action="<?php echo site_url('Questionnaire/save') ?>">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Create Questionnaire</strong></h3>
+                                    <h3 class="panel-title"><strong>Questionnaire</strong></h3>
                                   
                                 </div>
 
@@ -29,36 +29,55 @@
                                         </div>
                                     <?php } ?>
 
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-3 control-label">Questionnaire Name:</label>
-                                        <div class="col-md-3 col-xs-3">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-info-circle"></span></span>
-                                                <input required=""  type="text" class="form-control" name="questionnaireName">
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-3 control-label">Number of Questions</label>
-                                        <div class="col-md-3 col-xs-3">                                            
+                                    <div class="form-group" style="display: none;" >
+                                        <label class="col-md-3 col-xs-12 control-label">Number of Questions</label>
+                                        <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-info-circle"></span></span>
                                                 <input required="" id="numberOfQuestion" type="number" class="form-control" name="numberOfQuestions">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 col-xs-3 ">
+                                        <div class="col-md-3 col-xs-12 ">
                                              <input type="button" class="btn btn-primary" id="createQuest" value="Create" />
                                         </div>
                                     </div>
 
-                                   
+                                <div id="questionnaireDiv">
 
-                                    <div id="questionnaireDiv">
-
+                                    <div id="questionnaire_1">
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-md-3 col-xs-12 control-label"> Question 1 </label>
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><span class="fa fa-info-circle"></span></span>
+                                                    <input required="" id="question_1" type="text" class="form-control" name="question_1">
+                                                </div>
+                                                <div id="optionDiv_1" class="input-group checkbox">
+                                                    <br>
+                                                    <div class="col-md-8 col-xs-8">
+                                                        <h5>Select Type: <label> <input class="iradio" type="radio" name="questionOption_1" value="text" name="" checked> Text </label><label> <input class="iradio" type="radio" name="questionOption_1" value="multi" name="" > Multiple </label></h5>
+                                                    </div>
+                                                    <input type="button" class="btn btn-primary" value="Select Type" onclick="optionChange(1)"/>
+                                                </div>
+                                                <br> 
+                                                <div class="col-md-12 col-xs-12" id="numberOfMultiDiv_1" style="display: none">
+                                                    <div class="col-md-4 col-xs-4" >
+                                                        <h5> Number of options: </h5>
+                                                    </div>
+                                                    <div class="col-md-4 col-xs-4">  <input id="numberOfMultiQuestions_1" name="numberOfMultiQuestions_1" class="form-control" type="number" /> </div>
+                                                    <input type="button" class="btn btn-primary" value="Create options" onclick="multiQuestionSubmit(1)"/>
+                                                </div>
+                                                <div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_1">
+                                                </div>
+                                            </div>
+                                        </div>  
                                     </div>
 
+                                </div>
+
+                                <input type="button" class="btn btn-primary pull-right" value="Add Qustion" onclick="addQuestion()"/>
+                                <input type="button" class="btn btn-primary pull-right" value="Delete Qustion" onclick="deleteQuestion()"/>
 
                                 </div>
                                 <div class="panel-footer">
@@ -83,42 +102,49 @@
         
     });
 
-    function createQuest(numberOfQuestion) {
+    var i = 1;
 
+    function addQuestion() {
         var html = '';
 
-        for(var i=1; i<=numberOfQuestion; i++) {
+        i = i + 1;
 
-            html += '<br><div class="form-group">';
-            html += '<label class="col-md-3 col-xs-12 control-label"> Question ' + i + '</label>';
-            html += '<div class="col-md-6 col-xs-12">';
-            html += '<div class="input-group">';
-            html += '<span class="input-group-addon"><span class="fa fa-info-circle"></span></span>';
-            html += '<input required="" id="question_' + i + '" type="text" class="form-control" name="question_' + i + '">';
-            html += '</div>';
+        html += '<div id="questionnaire_' + i + '">';
+        html += '<br><div class="form-group">';
+        html += '<label class="col-md-3 col-xs-12 control-label"> Question ' + i + '</label>';
+        html += '<div class="col-md-6 col-xs-12">';
+        html += '<div class="input-group">';
+        html += '<span class="input-group-addon"><span class="fa fa-info-circle"></span></span>';
+        html += '<input required="" id="question_' + i + '" type="text" class="form-control" name="question_' + i + '">';
+        html += '</div>';
 
-            //type selection div
-            html += '<div id="optionDiv_'+ i +'" class="input-group checkbox">';
-            html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" type="radio" name="questionOption_'+ i +'" value="text" name="" checked> Text </label><label> <input class="iradio" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label></h5></div>';
+        //type selection div
+        html += '<div id="optionDiv_'+ i +'" class="input-group checkbox">';
+        html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" type="radio" name="questionOption_'+ i +'" value="text" name="" checked> Text </label><label> <input class="iradio" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label></h5></div>';
 
-            html += '<input type="button" class="btn btn-primary" value="Select Type" onclick="optionChange('+ i +')"/>';
-            html += '</div>';
+        html += '<input type="button" class="btn btn-primary" value="Select Type" onclick="optionChange('+ i +')"/>';
+        html += '</div>';
 
-            //multi questions number div
-            html += '<br> <div class="col-md-12 col-xs-12" id="numberOfMultiDiv_'+ i +'" style="display: none">';
-            html += '<div class="col-md-4 col-xs-4" > <h5> Number of options: </h5></div><div class="col-md-4 col-xs-4">  <input id="numberOfMultiQuestions_'+ i +'" name="numberOfMultiQuestions_'+ i +'" class="form-control" type="number" /> </div> ';
-            html += '<input type="button" class="btn btn-primary" value="Create options" onclick="multiQuestionSubmit('+ i +')"/>';
-            html += '</div> ';
+        //multi questions number div
+        html += '<br> <div class="col-md-12 col-xs-12" id="numberOfMultiDiv_'+ i +'" style="display: none">';
+        html += '<div class="col-md-4 col-xs-4" > <h5> Number of options: </h5></div><div class="col-md-4 col-xs-4">  <input id="numberOfMultiQuestions_'+ i +'" name="numberOfMultiQuestions_'+ i +'" class="form-control" type="number" /> </div> ';
+        html += '<input type="button" class="btn btn-primary" value="Create options" onclick="multiQuestionSubmit('+ i +')"/>';
+        html += '</div> ';
 
-            //multi questions div. Create number of multiquestions in this div
-            html += '<div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_'+ i +'">';
-            html += '</div>';
+        //multi questions div. Create number of multiquestions in this div
+        html += '<div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_'+ i +'">';
+        html += '</div>';
 
-            html += '</div> </div>';
-        }
+        html += '</div> </div> </div>';
 
-        $('#questionnaireDiv').html(html);
+        $('#questionnaireDiv').append(html);
 
+    }
+
+    function deleteQuestion() {
+
+        $('#questionnaire_' + i).remove();
+        i = i - 1;
     }
     
     function optionChange(id) {
@@ -128,6 +154,7 @@
         $('#optionDiv_' + id).hide();
 
         if (type == 'multi') {
+            //createMultiOption(2);
             $('#numberOfMultiDiv_' + id).show();
             createMultiOption();
         }
