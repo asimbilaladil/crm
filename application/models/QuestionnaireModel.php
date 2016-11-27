@@ -109,4 +109,22 @@ class QuestionnaireModel extends CI_Model {
         return $result;
     }
 
+    /*
+     * Function Name: getPublishSurveyByCompanyId
+     * Description: Get Publish Survey by company Id
+     * @param $company_id 
+     */
+    
+    public function getPublishSurveyByCompanyId($company_id) {
+
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('company_id', $company_id);
+        $this->db->where('status', 'publish');
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        
+        return $result;
+    }    
+
 }

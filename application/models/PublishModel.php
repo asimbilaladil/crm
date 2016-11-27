@@ -58,4 +58,42 @@ class PublishModel extends CI_Model {
         $result=$quary_result->row();
         return $result;
     }
+    /*
+     * Function Name: getByTokenAndType
+     * Description: Get public publish survey 
+     * @param $token 
+     * @param $type 
+     * @param $currentDate 
+     */
+    public function getByTokenAndType($token, $type, $currentDate) {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where('token', $token);
+        $this->db->where('type', $type);
+        $this->db->where( 'expire_date >=', $currentDate);
+        $quary_result=$this->db->get();
+        $result=$quary_result->row();
+
+        return $result;
+    }
+
+
+    /*
+     * Function Name: updatePublishSurveyExpireDate
+     * Description: Update expire date of publish survey using survey id
+     * @param $company_id 
+     */
+    
+    public function updatePublishSurveyExpireDate($id) {
+
+
+        $query = $this->db->query(' UPDATE publish_questionnaire 
+                                    SET expire_date = "' .date("y-m-d").
+                                    '" WHERE questionnaire_id = ' . $id . 
+                                    ' ORDER BY expire_date ASC
+                                    LIMIT 1');
+        return $query;
+    }   
+
+
 }

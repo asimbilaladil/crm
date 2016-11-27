@@ -11,10 +11,15 @@
                 <div class="panel-body">
                     <div class="table-responsive">
                         <div class="dataTables_length" id="DataTables_Table_0_length">
-                            <a href="<?php echo site_url("AddQuestionnaire") ?>">
+
+                                <button id="publishButton" onclick="showHideTable()" type="button" class="btn btn-default">Publish Survey</button>
+                                <button id="unpublishButton" onclick="showHideTable()" type="button" class="btn btn-default">Unpublish Survey</button> 
+
+                               <a href="<?php echo site_url("AddQuestionnaire") ?>">
                                 <button type="button" class="btn btn-default">Add Questionnaire</button> 
                             </a>
                         </div>
+
                         <div id="DataTables_Table_0_filter" class="dataTables_filter">
                             <label>Search:
                                 <input type="search" id="searchTerm" onkeyup="doSearch()" placeholder="" >
@@ -30,7 +35,9 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+
+
+                            <tbody id="unpublishTbody">
                             <?php  foreach ($data['Questionnaire'] as $key => $item) { ?>
                                 <tr>
                                     <td>
@@ -43,6 +50,26 @@
 
                                         <button onclick="setId(<?php echo $item->id;  ?>,'<?php echo $item->name;  ?>' )" data-toggle="modal" data-target="#myModal" type="button" class="btn btn-default">Publish
                                         </button> 
+
+                                    </td>
+                                </tr>
+                            <?php } ?>   
+                            </tbody>
+
+
+                            <tbody id="publishTbody">
+                            <?php  foreach ($data['PublishSurvey'] as $key => $item) { ?>
+                                <tr>
+                                    <td>
+                                          <?php echo $key+1;  ?>  
+                                    </td>
+                                    <td>
+                                        <?php echo $item->name;  ?>  
+                                    </td>
+                                    <td style="width: 10%;">
+
+                                      <a href="<?php echo site_url("survey/unpublish/".$item->id); ?>">  <button   type="button" class="btn btn-default">Unpublish
+                                        </button> </a> 
 
                                     </td>
                                 </tr>
@@ -75,7 +102,18 @@
         <input type="hidden" name="questionnaire_id" id="questionnaire_id">
             <br>
             <div class="form-group col-xs-12">
-                <label class="col-md-2 col-xs-12 control-label">Expire Date</label>
+                <label class="col-md-3 col-xs-12 control-label">Disable Expire</label>
+                <div class="col-md-6 col-xs-12">                                            
+                    <div class="input-group" >
+                      <input onchange="disableExpire()" type="checkbox" id="disable_expire" name="disable_expire" value="0"> Yes<br>
+                    </div>                                            
+
+                </div>
+           
+            </div>
+            <br>
+            <div class="form-group col-xs-12" id="expire_date_div">
+                <label class="col-md-3 col-xs-12 control-label">Expire Date</label>
                 <div class="col-md-6 col-xs-12">                                            
                     <div class="input-group" id="datetimepicker">
                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
@@ -85,10 +123,12 @@
                 </div>
            
             </div>
+            <br>
+
 
 
             <div class="form-group col-xs-12">
-                <label class="col-md-2 col-xs-12 control-label">Type</label>
+                <label class="col-md-3 col-xs-12 control-label">Type</label>
                 <div class="col-md-6 col-xs-12">                                            
                     <div class="input-group">
                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
@@ -120,11 +160,53 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-    
+
+    $("#publishTbody").hide();
+    $("#unpublishButton").hide();
+    var flag = false;
     var setId = function setId(id,name) {
        $('#questionnaire_id').val(id);
        var title = "Publish "+ name +" Questionnaire";
         $('#modal-title').html(title);
     }
  
+    /*
+    * Name: disableExpire
+    * Description: Enable or disable expire date and show and hide expire date div 
+    */
+    var disableExpire = function disableExpire() {
+
+        if($("#disable_expire").is(':checked')){
+            $("#expire_date_div").hide();
+            $('#expire_date').val("2099-12-30");
+
+        } else {
+            $("#expire_date_div").show();
+            $('#expire_date').val("");
+        }
+    }
+
+    /*
+    * Name: showHideTable
+    * Description: SHow and hide publish and unpublish table body
+    */
+    var showHideTable = function showHideTable() {
+
+        if(flag){
+            flag = false;
+            $("#unpublishTbody").hide();
+            $("#publishTbody").show();
+            $("#unpublishButton").show();
+            $("#publishButton").hide();
+
+        } else {
+            flag = true;
+            $("#unpublishTbody").show();
+            $("#publishTbody").hide();
+            $("#unpublishButton").hide();
+            $("#publishButton").show();
+            
+        }
+    }
+
 </script>

@@ -54,5 +54,7 @@ $route['client/login/(:any)'] = 'Client-Portal/Login/index/$id';
 $route['client/home'] = 'Client-Portal/Home/index';
 $route['client/logout'] = 'Client-Portal/Login/logout';
 $route['client/questionnaire/(:any)'] = 'QuestionnaireAttempt/index/$id';
+$route['survey/unpublish/(:any)'] = 'Questionnaire/Unpublish/$token';
+$route['survey/(:any)'] = 'Public/Survey/index/$id';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

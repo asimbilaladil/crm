@@ -25,6 +25,7 @@ class Questionnaire extends CI_Controller {
         $company_id = $this->session->userdata('company_id');
         $this->load->view('common/header');
         $data['Questionnaire'] = $this->QuestionnaireModel->getByCompanyId($company_id);
+        $data['PublishSurvey'] = $this->QuestionnaireModel->getPublishSurveyByCompanyId($company_id);
         $this->load->view('Questionnaire/Questionnaire', array('data' => $data));
         $this->load->view('common/footer');
 
@@ -54,4 +55,23 @@ class Questionnaire extends CI_Controller {
         redirect('Questionnaire');
 
     }
+
+    /*
+     * Function Name: Unpublish
+     * Description: Unpublish Survey
+     */
+    public function Unpublish() {
+
+        $surveyId = $this->uri->segment(3);
+        $expire_date = date("Y-m-d");
+        $data = array (
+            'status' => '' 
+            );       
+
+        $this->QuestionnaireModel->update('id', $surveyId, $data);
+        $this->PublishModel->updatePublishSurveyExpireDate( $surveyId );
+        
+        redirect('Questionnaire');
+
+    }    
 }
