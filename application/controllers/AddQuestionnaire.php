@@ -58,7 +58,7 @@ class AddQuestionnaire extends CI_Controller {
                 
                 //iterating for muliti questions in a questions 
                 for ( $j = 1; $j <= $numberofMultiQuestions; $j++ ) {
-                    $multiqestion = $this->input->post('multiQuestion_' . $j);
+                    $multiqestion = $this->input->post('multiQuestion_' . $i . $j);
 
                     $this->MultipleChoiceQuestionModel->insert( array(
                         'question_id'  => $questionInsertedId,
