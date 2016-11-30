@@ -40,36 +40,8 @@
                    
                 </div>
 
+                <!-- Dynamic append questions in this div -->
                 <div id="questionnaireDiv">
-
-                    <div id="questionnaire_1">
-                        <br>
-                        <div class="form-group">
-                            <label class="col-md-3 col-xs-12 control-label"> Question 1 </label>
-                            <div class="col-md-6 col-xs-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="fa fa-info-circle"></span></span>
-                                    <input required="" id="question_1" type="text" class="form-control" name="question_1">
-                                </div>
-                                <div id="optionDiv_1" class="input-group checkbox">
-                                    <br>
-                                    <div class="col-md-8 col-xs-8">
-                                        <h5>Select Type: <label> <input class="iradio" type="radio" name="questionOption_1" value="text" name="" checked> Text </label><label> <input class="iradio" type="radio" name="questionOption_1" value="multi" name="" > Multiple </label></h5>
-                                    </div>
-                                    <input type="button" class="btn btn-primary" value="Select Type" onclick="multiQuestionSubmit(1)"/>
-                                </div>
-                                <br>
-
-                                <div class="col-md-12 col-xs-12" id="addMultiQuestion_1" style="display: none">
-                                    <input type="button" class="btn btn-primary pull-right" value="Add option" onclick="multiQuestionSubmit(1)"/>
-                                    <input type="hidden" id="numberOfMultiQuestions_1" name="numberOfMultiQuestions_1" />
-                                </div> 
-
-                                <div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_1">
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
 
                 </div>
 
@@ -102,7 +74,7 @@
         
     });
 
-    var i = 1;
+    var i = 0;
 
     function addQuestion() {
         var html = '';
@@ -120,19 +92,20 @@
 
         //type selection div
         html += '<div id="optionDiv_'+ i +'" class="input-group checkbox">';
-        html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" type="radio" name="questionOption_'+ i +'" value="text" name="" checked> Text </label><label> <input class="iradio" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label></h5></div>';
+        html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="text" name="" checked> Text </label><label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label></h5></div>';
 
-        html += '<input type="button" class="btn btn-primary" value="Select Type" onclick="multiQuestionSubmit('+ i +')"/>';
+        
         html += '</div>';
 
         //multi questions number div
         html += '</br> <div class="col-md-12 col-xs-12" id="addMultiQuestion_' + i + '" style="display: none">';
-        html += '<input type="button" class="btn btn-primary pull-right" value="Add option" onclick="multiQuestionSubmit(' + i + ')"/>';
-        html += '<input type="text" id="numberOfMultiQuestions_' + i + '" name="numberOfMultiQuestions_' + i + '" />';
+        html += '<input type="button" class="btn btn-primary pull-right" value="Add option" onclick="createMultiOption(' + i + ')"/>';
+        
         html += '</div>'; 
 
         //multi questions div. Create number of multiquestions in this div
         html += '<div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_'+ i +'">';
+        html += '<input type="hidden" id="numberOfMultiQuestions_' + i + '" name="numberOfMultiQuestions_' + i + '" />';
         html += '</div>';
 
         html += '</div> </div> </div>';
@@ -152,17 +125,23 @@
     function multiQuestionSubmit(id) {
 
         var type = $('input[name="questionOption_'+ id +'"]:checked').val();
-        $('#optionDiv_' + id).hide();
-
+        
         if (type == 'multi') {
+
             $('#addMultiQuestion_' + id).show();
             $('#multiQuestionsDiv_' + id).show();
-            createMultiOption(id);
+
+        } else if (type == 'text') {
+            $('#addMultiQuestion_' + id).hide();
+            $('#multiQuestionsDiv_' + id).html('');
+
         }
 
     }
 
+
     
+
     function createMultiOption(id) {
         //var html = '<h5>Multiple Choice:</h5><br>';
 
@@ -178,9 +157,9 @@
         html += '</div> </div> </div>';
         $('#multiQuestionsDiv_' + id).append(html);
 
+        j++;
         $('#numberOfMultiQuestions_' + id).val( j );
 
-        j = j + 1;
         return html;
     }
 
