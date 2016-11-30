@@ -100,8 +100,11 @@
         //multi questions number div
         html += '</br> <div class="col-md-12 col-xs-12" id="addMultiQuestion_' + i + '" style="display: none">';
         html += '<input type="button" class="btn btn-primary pull-right" value="Add option" onclick="createMultiOption(' + i + ')"/>';
-        
         html += '</div>'; 
+
+        //text type div
+        html += '<div id="textTypeDiv_'+ i +'" class="input-group checkbox" style="display: none">';
+        html += '</div>';
 
         //multi questions div. Create number of multiquestions in this div
         html += '<div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_'+ i +'">';
@@ -127,20 +130,33 @@
         var type = $('input[name="questionOption_'+ id +'"]:checked').val();
         
         if (type == 'multi') {
-
+            $('#textTypeDiv_' + id).hide();
             $('#addMultiQuestion_' + id).show();
             $('#multiQuestionsDiv_' + id).show();
 
         } else if (type == 'text') {
             $('#addMultiQuestion_' + id).hide();
             $('#multiQuestionsDiv_' + id).html('');
-
+            $('#textTypeDiv_' + id).show();
+            createTextType(id);
         }
 
     }
 
 
-    
+    function createTextType(id) {
+        var html = '';
+
+        html += '<br>'
+        html += '<div class="col-md-8 col-xs-8">';
+        html += '<h5>Select Type: <label>';
+        html += '<input class="iradio" onchange="" type="radio" name="textType_'+ i +'" value="text" name="" checked> Numeric </label><label>';
+        html += '<input class="iradio" onchange="" type="radio" name="textType_'+ i +'" value="multi" name="" > Text </label></h5';
+        html += '</div>';
+        
+        $('#textTypeDiv_' + id).html(html);
+               
+    }
 
     function createMultiOption(id) {
         //var html = '<h5>Multiple Choice:</h5><br>';
