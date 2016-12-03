@@ -11,7 +11,7 @@
             <form class="form-horizontal" method="POST" action="<?php echo site_url('AddQuestionnaire/save') ?>">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Questionnaire</strong></h3>
+                    <h3 class="panel-title"><strong>Survey</strong></h3>
                   
                 </div>
 
@@ -30,7 +30,7 @@
                     <?php } ?>
 
                 <div class="form-group">
-                    <label class="col-md-3 col-xs-3 control-label">Questionnaire Name:</label>
+                    <label class="col-md-3 col-xs-3 control-label">Survey Name:</label>
                     <div class="col-md-3 col-xs-3">                                            
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-info-circle"></span></span>
@@ -45,8 +45,8 @@
 
                 </div>
 
-                <input type="button" class="btn btn-primary pull-right" value="Add Qustion" onclick="addQuestion()"/>
-                <input type="button" class="btn btn-primary pull-right" value="Delete Qustion" onclick="deleteQuestion()"/>
+                <input type="button" class="btn btn-primary pull-right" value="Add Question" onclick="addQuestion()"/>
+                <input style="display: none;" type="button" class="btn btn-primary pull-right" value="Delete Qustion" onclick="deleteQuestion()"/>
 
                 </div>
                 <div class="panel-footer">
@@ -92,7 +92,7 @@
 
         //type selection div
         html += '<div id="optionDiv_'+ i +'" class="input-group checkbox">';
-        html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="text" name="" checked> Text </label><label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label></h5></div>';
+        html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="text" name="" > Text </label><label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label></h5></div>';
 
         
         html += '</div>';
