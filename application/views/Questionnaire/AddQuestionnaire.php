@@ -108,7 +108,7 @@
 
         //multi questions div. Create number of multiquestions in this div
         html += '<div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_'+ i +'">';
-        html += '<input type="text" id="numberOfMultiQuestions_' + i + '" name="numberOfMultiQuestions_' + i + '" />';
+        html += '<input type="hidden" id="numberOfMultiQuestions_' + i + '" name="numberOfMultiQuestions_' + i + '" />';
         html += '</div>';
 
         html += '</div> </div> </div>';
