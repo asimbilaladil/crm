@@ -150,8 +150,8 @@
         html += '<br>'
         html += '<div class="col-md-8 col-xs-8">';
         html += '<h5>Select Type: <label>';
-        html += '<input class="iradio" onchange="" type="radio" name="textType_'+ i +'" value="text" name="" checked> Numeric </label><label>';
-        html += '<input class="iradio" onchange="" type="radio" name="textType_'+ i +'" value="multi" name="" > Text </label></h5';
+        html += '<input class="iradio" onchange="" type="radio" name="textType_'+ i +'" value="numeric" name="" checked> Numeric </label><label>';
+        html += '<input class="iradio" onchange="" type="radio" name="textType_'+ i +'" value="text" name="" > Text </label></h5';
         html += '</div>';
         
         $('#textTypeDiv_' + id).html(html);
@@ -161,8 +161,8 @@
     function createMultiOption(id) {
         //var html = '<h5>Multiple Choice:</h5><br>';
 
-        var j = parseInt( ( $('#numberOfMultiQuestions_' + id).val() ? $('#numberOfMultiQuestions_' + id).val() : 1 ) );
-
+        var j = parseInt( ( $('#numberOfMultiQuestions_' + id).val() ? $('#numberOfMultiQuestions_' + id).val() : 0 ) );
+        j++;
         var html = '';
         html += '<div class="form-group col-md-12 col-xs-12">';
         html += '<label class="col-md-3 col-xs-12 control-label"> Option' + j + ': </label>';
@@ -173,7 +173,7 @@
         html += '</div> </div> </div>';
         $('#multiQuestionsDiv_' + id).append(html);
 
-        j++;
+        
         $('#numberOfMultiQuestions_' + id).val( j );
 
         return html;
