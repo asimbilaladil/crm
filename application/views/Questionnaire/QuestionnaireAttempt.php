@@ -29,7 +29,6 @@
                         </div>
                     <?php } ?>
 
-
                     <input type="hidden" name="questionnaireId" value="<?php echo $data['questionnaireId'] ?>" />
                     <input type="hidden" name="publishId" value="<?php echo $data['publishId'] ?>" />
 
@@ -60,8 +59,10 @@
                                 }
                             //text
                             } else {
-
-                                echo '<div class="col-md-3 col-xs-3"></div><div style="margin-left: 15px;" class="form-group col-md-6 col-xs-12"> <input  style="width: 50%;" type="text" name="answer_'. $count .'" /></div>';
+                                $type = ($question['type'] == 'numeric' ? 'number' : 'text');
+                                
+                                echo '<div class="col-md-3 col-xs-3"></div><div style="margin-left: 15px;" class="form-group col-md-6 col-xs-12"> <input  style="width: 50%;"
+                                 type="'. $type .'" name="answer_'. $count .'" /></div>';
 
                             }
                         }
