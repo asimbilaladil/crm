@@ -74,7 +74,7 @@ class AddQuestionnaire extends CI_Controller {
 
             }
         }
-        redirect('AddQuestionnaire');
+        redirect('Questionnaire');
     }
 
 }

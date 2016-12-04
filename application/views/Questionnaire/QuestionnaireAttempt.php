@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
     <li><a href="#">Home</a></li>
-    <li class="active">Attempt Questionnaire</li>
+    <li class="active">Survey</li>
 </ul>
 <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
@@ -11,7 +11,7 @@
             <form class="form-horizontal" method="POST" action="<?php echo site_url('QuestionnaireAttempt/save') ?>" >
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Attempt Questionnaire</strong></h3>
+                    <h3 class="panel-title"><strong>Survey</strong></h3>
                   
                 </div>
 
@@ -61,7 +61,7 @@
                             } else {
                                 $type = ($question['type'] == 'numeric' ? 'number' : 'text');
                                 
-                                echo '<div class="col-md-3 col-xs-3"></div><div style="margin-left: 15px;" class="form-group col-md-6 col-xs-12"> <input  style="width: 50%;"
+                                echo '<div class="col-md-3 col-xs-3"></div><div style="margin-left: 15px;" class="form-group col-md-6 col-xs-12"> <input required  style="width: 50%;"
                                  type="'. $type .'" name="answer_'. $count .'" /></div>';
 
                             }

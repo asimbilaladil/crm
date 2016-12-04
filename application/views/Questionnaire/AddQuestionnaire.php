@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
     <li><a href="#">Home</a></li>
-    <li class="active">Add Employee</li>
+    <li class="active">Add Survey</li>
 </ul>
 <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">

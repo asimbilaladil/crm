@@ -16,7 +16,7 @@
                                 <button id="unpublishButton" onclick="showHideTable()" type="button" class="btn btn-default">Unpublish Survey</button> 
 
                                <a href="<?php echo site_url("AddQuestionnaire") ?>">
-                                <button type="button" class="btn btn-default">Add Questionnaire</button> 
+                                <button type="button" class="btn btn-default">Add Survey</button> 
                             </a>
                         </div>
 
