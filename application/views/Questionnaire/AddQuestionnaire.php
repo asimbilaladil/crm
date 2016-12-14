@@ -92,7 +92,7 @@
 
         //type selection div
         html += '<div id="optionDiv_'+ i +'" class="input-group checkbox">';
-        html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="text" name="" > Text </label><label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label></h5></div>';
+        html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="numeric" name="" > Numeric </label> <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="text" name="" > Text </label><label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label> </h5></div>';
 
         
         html += '</div>';
@@ -101,10 +101,6 @@
         html += '</br> <div class="col-md-12 col-xs-12" id="addMultiQuestion_' + i + '" style="display: none">';
         html += '<input type="button" class="btn btn-primary pull-right" value="Add option" onclick="createMultiOption(' + i + ')"/>';
         html += '</div>'; 
-
-        //text type div
-        html += '<div id="textTypeDiv_'+ i +'" class="input-group checkbox" style="display: none">';
-        html += '</div>';
 
         //multi questions div. Create number of multiquestions in this div
         html += '<div class="col-md-12 col-xs-12 input-group" id="multiQuestionsDiv_'+ i +'">';
@@ -134,11 +130,9 @@
             $('#addMultiQuestion_' + id).show();
             $('#multiQuestionsDiv_' + id).show();
 
-        } else if (type == 'text') {
+        } else {
             $('#addMultiQuestion_' + id).hide();
             $('#multiQuestionsDiv_' + id).html('');
-            $('#textTypeDiv_' + id).show();
-            createTextType(id);
         }
 
     }

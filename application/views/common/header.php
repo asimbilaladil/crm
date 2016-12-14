@@ -61,11 +61,11 @@
                     </li>                  
 
                     <li class="active">
-                        <a href="<?php echo site_url("Questionnaire") ?>"><span class="fa fa-user"></span> <span class="xn-text">Questionnaire</span></a>
+                        <a href="<?php echo site_url("Questionnaire") ?>"><span class="fa fa-user"></span> <span class="xn-text">Survey</span></a>
                     </li>
 
                     <li class="active">
-                        <a href="<?php echo site_url("Report") ?>"><span class="fa fa-user"></span> <span class="xn-text">Questionnaire Report</span></a>
+                        <a href="<?php echo site_url("Report") ?>"><span class="fa fa-user"></span> <span class="xn-text">Survey Report</span></a>
                     </li>
 
              

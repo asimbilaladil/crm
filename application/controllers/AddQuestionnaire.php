@@ -46,11 +46,6 @@ class AddQuestionnaire extends CI_Controller {
             $question = $this->input->post('question_' . $i);
             $type = $this->input->post('questionOption_' . $i);
 
-            if ( $this->input->post('textType_' . $i) && $this->input->post('textType_' . $i) == 'numeric' ) {
-
-                $type = $this->input->post('textType_' . $i);
-            }
-
             $questionInsertedId = $this->QuestionModel->insert( array(
                 'question'          => $question,
                 'questionnaire_id'  => $insertedId,
