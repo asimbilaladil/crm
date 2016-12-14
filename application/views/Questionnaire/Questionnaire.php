@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
     <li><a href="#">Home</a></li>
-    <li class="active">Questionnaire</li>
+    <li class="active">Survey</li>
 </ul>
 <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
@@ -102,7 +102,7 @@
         <input type="hidden" name="questionnaire_id" id="questionnaire_id">
             <br>
             <div class="form-group col-xs-12">
-                <label class="col-md-3 col-xs-12 control-label">Disable Expire</label>
+                <label class="col-md-3 col-xs-12 control-label">No Expire</label>
                 <div class="col-md-6 col-xs-12">                                            
                     <div class="input-group" >
                       <input onchange="disableExpire()" type="checkbox" id="disable_expire" name="disable_expire" value="0"> Yes<br>

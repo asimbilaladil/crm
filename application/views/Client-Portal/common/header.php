@@ -46,7 +46,7 @@
                     </li>
                     <li class="xn-title">Clients</li>
                     <li >
-                        <a href="<?php echo site_url("client/home") ?>"><span class="fa fa-home"></span> <span class="xn-text">Questionnaire</span></a>                        
+                        <a href="<?php echo site_url("client/home") ?>"><span class="fa fa-home"></span> <span class="xn-text">Survey</span></a>                        
                     </li>                             
              
                 </ul>
