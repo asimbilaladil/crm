@@ -92,7 +92,7 @@
 
         //type selection div
         html += '<div id="optionDiv_'+ i +'" class="input-group checkbox">';
-        html += '<br><div class="col-md-8 col-xs-8"><h5>Select Type: <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="numeric" name="" > Numeric </label> <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="text" name="" > Text </label><label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label> </h5></div>';
+        html += '<br><div class="col-md-10 col-xs-10"><h5>Select Type: <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="numeric" name="" > Numeric </label> <label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="text" name="" > Text </label><label> <input class="iradio" onchange="multiQuestionSubmit('+ i +')" type="radio" name="questionOption_'+ i +'" value="multi" name="" > Multiple </label> </h5></div>';
 
         
         html += '</div>';
