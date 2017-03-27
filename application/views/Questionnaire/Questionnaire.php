@@ -32,6 +32,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Type</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -46,10 +48,36 @@
                                     <td>
                                         <?php echo $item->name;  ?>  
                                     </td>
+
+                                    <td>
+                                        <?php echo  ($item->status == 'publish' ? "Published" : "Not Published") ?>  
+                                    </td>
+
+                                    <td>
+                                        <?php echo $item->type ?>
+                                    </td>
+
+
                                     <td style="width: 10%;">
 
+                                    <?php
+                                        if ($item->status != "publish") {
+                                
+                                    ?>
+
                                         <button onclick="setId(<?php echo $item->id;  ?>,'<?php echo $item->name;  ?>' )" data-toggle="modal" data-target="#myModal" type="button" class="btn btn-default">Publish
-                                        </button> 
+                                        </button>
+
+                                        <?php 
+                                            } else {
+                                        ?>
+
+                                        <a href="<?php echo site_url("survey/unpublish/".$item->id); ?>">  <button   type="button" class="btn btn-default">Unpublish
+                                        </button> </a> 
+
+                                        <?php 
+                                            }
+                                        ?>                                        
 
                                     </td>
                                 </tr>
@@ -57,7 +85,7 @@
                             </tbody>
 
 
-                            <tbody id="publishTbody">
+<!--                             <tbody id="publishTbody">
                             <?php  foreach ($data['PublishSurvey'] as $key => $item) { ?>
                                 <tr>
                                     <td>
@@ -74,7 +102,7 @@
                                     </td>
                                 </tr>
                             <?php } ?>   
-                            </tbody>
+                            </tbody> -->
                         </table>
                     </div>
                 </div>
