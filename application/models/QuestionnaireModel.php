@@ -57,14 +57,15 @@ class QuestionnaireModel extends CI_Model {
     
     public function getByCompanyId($company_id) {
 
-        $this->db->select('*');
-        $this->db->from($this->tableName);
-        $this->db->where('company_id', $company_id);
-        $this->db->where('status !=', 'publish');
-        $quary_result=$this->db->get();
-        $result = $quary_result->result();
-        
-        return $result;
+
+
+        $query = $this->db->query(
+            'SELECT questionnaire.*, publish_questionnaire.type, publish_questionnaire.expire_date  FROM questionnaire 
+                LEFT JOIN publish_questionnaire ON questionnaire.id = publish_questionnaire.questionnaire_id
+                WHERE questionnaire.company_id = ' . $company_id);
+
+        $query->result();
+        return $query->result();
     }
 
     /*
