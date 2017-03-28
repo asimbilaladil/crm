@@ -33,6 +33,7 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Status</th>
+                                    <th>Expire</th>
                                     <th>Type</th>
                                     <th>Action</th>
                                 </tr>
@@ -52,6 +53,19 @@
                                     <td>
                                         <?php echo  ($item->status == 'publish' ? "Published" : "Not Published") ?>  
                                     </td>
+
+                                    <td>
+                                        <?php
+
+                                        if (new DateTime() > new DateTime($item->expire_date)) {
+                                            echo $item->expire_date;
+                                        } else if ($item->expire_date) {
+                                            echo  'Valid';
+                                        }
+           
+                                        ?>  
+                                    </td>
+
 
                                     <td>
                                         <?php echo $item->type ?>
